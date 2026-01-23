@@ -85,7 +85,7 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
         if (result.error) {
             setError(result.error);
         } else {
-            setUploadedImageId(result.assetId);
+            setUploadedImageId(result.assetId ?? null);
         }
     };
 
