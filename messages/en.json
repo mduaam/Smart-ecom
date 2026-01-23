@@ -1,0 +1,539 @@
+{
+    "Index": {
+        "title": "IPTV Smarters Subscription",
+        "description": "Premium IPTV Smarters Pro and Player Lite subscriptions."
+    },
+    "Nav": {
+        "plans": "Plans",
+        "devices": "Devices",
+        "support": "Support",
+        "about": "About",
+        "getStarted": "Get Started",
+        "account": "Account",
+        "signup": "Sign Up"
+    },
+    "Hero": {
+        "badge": "Premium IPTV Entertainment",
+        "title": "Stream Smarter with",
+        "titleHighlight": "Smarters Pro",
+        "desc": "Access 20,000+ live channels, 60,000+ VODs, and premium sports in stunning 4K quality. Join 100k+ global users today.",
+        "ctaStart": "Browse Plans",
+        "ctaDemo": "Free Trial"
+    },
+    "Pricing": {
+        "title": "Choose the Perfect Plan for You",
+        "subtitle": "Flexible subscriptions tailored to your needs. No hidden fees, no contracts. Instant activation guaranteed.",
+        "perMonth": "per month",
+        "perYear": "per year",
+        "per6Months": "per 6 months",
+        "mostPopular": "Most Popular",
+        "cta": "Choose This Plan",
+        "secure": "Secure Checkout",
+        "compatibilityTitle": "Device Compatibility",
+        "compatibilityDesc": "Our IPTV service is designed to work seamlessly across all your favorite devices.",
+        "multiRoomTitle": "Need a Multi-Room subscription?",
+        "multiRoomDesc": "Want to watch on more than 2 devices at the same time? Contact our support team for a custom quote.",
+        "contactSupport": "Contact Support",
+        "features": {
+            "channels": "20,000+ Live Channels",
+            "vod": "60,000+ VOD (Movies & Series)",
+            "quality": "4K / Ultra HD Quality",
+            "connections": "{count} Connection Included",
+            "connectionsMulti": "Up to {count} Connections",
+            "epg": "EPG & Catch-up Included",
+            "devices": "All Devices Supported",
+            "support": "24/7 Premium Support",
+            "supportFast": "Support in < 2h",
+            "antiFreeze": "Anti-Freeze Technology"
+        },
+        "comparison": {
+            "title": "Compare Our Features",
+            "colFeatures": "Features",
+            "colStandard": "Standard",
+            "colPremium": "Premium"
+        },
+        "plans": {
+            "1month": "1 Month Starter",
+            "6months": "6 Months Standard",
+            "12months": "12 Months Premium"
+        },
+        "devicesList": {
+            "smartTv": "Smart TV",
+            "android": "Android/iOS",
+            "firestick": "Firestick",
+            "pc": "PC/Mac"
+        },
+        "tableValues": {
+            "channels": "20,000+",
+            "vod": "60,000+",
+            "supportStd": "< 12h",
+            "supportPrm": "< 2h"
+        }
+    },
+    "Support": {
+        "title": "How can we help?",
+        "searchPlaceholder": "Search for guides, issues, or questions...",
+        "searchBtn": "Search",
+        "backToSupport": "Back to Support",
+        "searchResultsFor": "Search results for",
+        "noResults": "No results found",
+        "tryDifferentSearch": "Try searching for a different keyword",
+        "categories": {
+            "installation": {
+                "title": "Installation Guides",
+                "desc": "Step-by-step instructions for all your devices."
+            },
+            "troubleshooting": {
+                "title": "Troubleshooting",
+                "desc": "Quick fixes for common streaming and login issues."
+            },
+            "faq": {
+                "title": "Common Questions",
+                "desc": "Find answers to frequently asked questions."
+            },
+            "tickets": {
+                "title": "Ticket System",
+                "desc": "Can't find what you need? Open a support ticket."
+            },
+            "devices": {
+                "title": "Device Hub",
+                "desc": "Learn more about device compatibility and apps."
+            },
+            "kb": {
+                "title": "Knowledge Base",
+                "desc": "Full documentation and advanced tutorials."
+            }
+        },
+        "browse": "Browse Category",
+        "ctaTitle": "Still need assistance?",
+        "ctaDesc": "Our support experts are available around the clock to help you with activation, billing, or technical streaming issues.",
+        "ctaTicket": "Open a Support Ticket",
+        "ctaWhatsApp": "Contact via WhatsApp"
+    },
+    "Account": {
+        "welcome": "Welcome back",
+        "renew": "Renew Subscription",
+        "sidebar": {
+            "dashboard": "Dashboard",
+            "subscriptions": "My Subscriptions",
+            "orders": "Orders",
+            "tickets": "Support Tickets",
+            "billing": "Billing",
+            "settings": "Settings",
+            "logout": "Log Out"
+        },
+        "stats": {
+            "status": "Status",
+            "active": "Active",
+            "daysLeft": "Days Left",
+            "security": "Security",
+            "solid": "Solid"
+        },
+        "subscription": {
+            "title": "Current Subscription",
+            "code": "Activation Code",
+            "copy": "Copy",
+            "credentials": "App Login Credentials",
+            "username": "Username",
+            "password": "Password",
+            "portal": "Portal URL",
+            "deviceUsage": "Device Usage",
+            "connected": "Connected",
+            "limit": "Limit",
+            "service": "Service",
+            "installGuide": "How to Install on Your Device"
+        }
+    },
+    "Footer": {
+        "desc": "Premium IPTV subscription service providing 20,000+ live channels and VOD Worldwide. Quality you can trust.",
+        "product": "Product",
+        "support": "Support",
+        "contact": "Contact",
+        "rights": "All rights reserved.",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy",
+        "refund": "Refund Policy",
+        "links": {
+            "pricing": "Pricing Plans",
+            "devices": "Supported Devices",
+            "regional": "Regional Content",
+            "features": "Features",
+            "installation": "Installation Guides",
+            "troubleshooting": "Troubleshooting",
+            "faq": "FAQ",
+            "ticket": "Open Ticket"
+        }
+    },
+    "Home": {
+        "quality": {
+            "title": "Why Choose Smarters Pro?",
+            "ultraFast": "Ultra-Fast Streaming",
+            "ultraFastDesc": "Zero buffering with our premium high-speed servers located worldwide.",
+            "stable": "Most Stable Service",
+            "stableDesc": "99.9% uptime guaranteed with automatic failover systems and 24/7 monitoring.",
+            "multiDevice": "Multi-Device Support",
+            "multiDeviceDesc": "Works on Firestick, Android, iOS, Smart TV, MAG, Windows, and macOS."
+        },
+        "features": {
+            "badge": "PREMIUM QUALITY",
+            "title": "Enjoy Your Favorite Content in",
+            "titleHighlight": "Crystal Clear 4K",
+            "list": [
+                "20k+ TV Channels from all around the world",
+                "60k+ Movies & TV Series (VOD) updated daily",
+                "All Sports packages including PPV events",
+                "EPG Support and Catch-up TV (up to 7 days)",
+                "User-friendly Smarters Pro Interface"
+            ],
+            "cta": "Explore All Plans"
+        },
+        "cta": {
+            "title": "Ready to Start Your Premium Entertainment Journey?",
+            "desc": "Join 100k+ happy users who transformed their TV experience. Choose your plan and get activated in minutes.",
+            "plansBtn": "View Pricing Plans",
+            "supportBtn": "Chat With Support",
+            "guarantee": "7-Day Money Back Guarantee • Instant Activation"
+        }
+    },
+    "Regions": {
+        "badge": "{region} Coverage",
+        "title": "Best IPTV Provider in",
+        "desc": "Watch all your favorite {region} local channels, sports, and news in 4K/FHD quality.",
+        "channelsTitle": "Channels",
+        "preview": "Preview of what you get included",
+        "includedTitle": "What's Included?",
+        "includedDesc": "Our {region} package offers the most stable and high-quality streams available on the market today. We cover all major networks and regional stations.",
+        "features": {
+            "networks": "All Major {region} Networks",
+            "sports": "Regional Sports & News",
+            "cinema": "4K & FHD Cinema Channels",
+            "kids": "Kids & Documentary Channels",
+            "catchup": "7-Day Catch-up TV"
+        },
+        "cta": "Get {region} Package"
+    },
+    "Metadata": {
+        "Devices": {
+            "title": "Compatible Devices for IPTV Smarters Pro | Connect Any Device",
+            "description": "Check compatibility for Firestick, Android TV, iOS, Samsung Smart TV, and Windows. Install IPTV Smarters Pro on your favorite device today."
+        },
+        "Plans": {
+            "title": "IPTV Smarters Plans & Pricing | Flexible 1 to 12 Month Subscriptions",
+            "description": "Choose the best IPTV Smarters plan for you. Get access to 20,000+ channels and 4K movies with our 1, 6, or 12-month subscriptions."
+        },
+        "Support": {
+            "title": "IPTV Smarters Pro Support Center | Guides, FAQ & Troubleshooting",
+            "description": "Get help with IPTV Smarters Pro. Find installation guides, troubleshooting tips, FAQs, and contact our 24/7 support team."
+        },
+        "Troubleshooting": {
+            "title": "Troubleshooting IPTV Smarters Pro | Fix Common Issues",
+            "description": "Resolve common streaming issues, buffering, login problems, and app crashes with our detailed troubleshooting guide."
+        }
+    },
+    "Troubleshooting": {
+        "title": "Troubleshooting",
+        "subtitle": "Quick solutions to common issues",
+        "back": "Back to Support",
+        "trySolutions": "Try these solutions:",
+        "stillNeedHelp": {
+            "title": "Still Need Help?",
+            "desc": "If these solutions didn't work, our support team is ready to assist you.",
+            "ticketBtn": "Open Support Ticket",
+            "faqBtn": "View FAQs"
+        },
+        "issues": {
+            "buffering": {
+                "title": "Buffering or Slow Streaming",
+                "solutions": [
+                    "Check your internet speed (minimum 10 Mbps for SD, 25 Mbps for HD)",
+                    "Restart your router and device",
+                    "Switch to a wired connection if possible",
+                    "Close other apps using bandwidth",
+                    "Try a different server in the app settings"
+                ]
+            },
+            "video": {
+                "title": "Video Not Playing",
+                "solutions": [
+                    "Update the Smarters Pro app to the latest version",
+                    "Clear app cache and data",
+                    "Check if your subscription is active",
+                    "Verify your activation code is correct",
+                    "Try a different channel or content"
+                ]
+            },
+            "login": {
+                "title": "Login Issues",
+                "solutions": [
+                    "Double-check your username and password",
+                    "Ensure your subscription hasn't expired",
+                    "Verify you're using the correct portal URL",
+                    "Reset your password from the account dashboard",
+                    "Contact support if issue persists"
+                ]
+            },
+            "crash": {
+                "title": "App Crashes or Freezes",
+                "solutions": [
+                    "Force close and restart the app",
+                    "Clear app cache and data",
+                    "Update to the latest app version",
+                    "Restart your device",
+                    "Reinstall the app if problem continues"
+                ]
+            }
+        }
+    },
+    "DevicesPage": {
+        "title": "Compatible Devices",
+        "subtitle": "Smarters Pro works on almost every device. Choose your device below to see installation instructions and download the app.",
+        "viewGuide": "View Guides →",
+        "list": {
+            "firestick": {
+                "name": "Amazon Firestick",
+                "description": "Stream on your Amazon Fire TV Stick with our optimized IPTV player."
+            },
+            "android-tv": {
+                "name": "Android TV",
+                "description": "Enjoy seamless streaming on your Android TV device."
+            },
+            "android-mobile": {
+                "name": "Android Mobile",
+                "description": "Watch your favorite content on your Android smartphone or tablet."
+            },
+            "ios": {
+                "name": "iOS (iPhone/iPad)",
+                "description": "Stream on your iPhone or iPad with our iOS app."
+            },
+            "smart-tv": {
+                "name": "Smart TV",
+                "description": "Native IPTV experience on Samsung, LG, and other Smart TVs."
+            },
+            "mag": {
+                "name": "MAG Box",
+                "description": "Professional IPTV solution for MAG set-top boxes."
+            },
+            "windows": {
+                "name": "Windows PC",
+                "description": "Stream on your Windows computer with our desktop application."
+            },
+            "macos": {
+                "name": "macOS",
+                "description": "Premium IPTV experience on your Mac."
+            }
+        },
+        "features": {
+            "title": "Why Choose Our Multi-Device Support?",
+            "universal": {
+                "title": "Universal Compatibility",
+                "desc": "Works on all major platforms and devices without any hassle."
+            },
+            "setup": {
+                "title": "Easy Setup",
+                "desc": "Step-by-step guides for quick installation on any device."
+            },
+            "multiScreen": {
+                "title": "Multi-Screen Support",
+                "desc": "Use your subscription on multiple devices simultaneously."
+            }
+        }
+    },
+    "Auth": {
+        "title": "Welcome Back",
+        "subtitle": "Sign in to access your dashboard",
+        "createAccount": "Create Account",
+        "joinSubtitle": "Start your premium entertainment journey",
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "Enter your email",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Create a password",
+        "confirmPasswordLabel": "Confirm Password",
+        "confirmPasswordPlaceholder": "Re-enter your password",
+        "nameLabel": "Full Name",
+        "namePlaceholder": "Enter your full name",
+        "signInBtn": "Sign In",
+        "createAccountBtn": "Create Account",
+        "creatingAccount": "Creating Account...",
+        "signingIn": "Signing in...",
+        "alreadyHaveAccount": "Already have an account?",
+        "error": {
+            "invalidCredentials": "Invalid email or password",
+            "serverError": "Something went wrong. Please try again."
+        },
+        "signupTitle": "Sign Up | Smarters Pro",
+        "signupDesc": "Create your account and start streaming 20,000+ channels instantly."
+    },
+    "Team": {
+        "title": "Team Management",
+        "subtitle": "Manage your team members and their roles",
+        "inviteBtn": "Invite Member",
+        "roles": {
+            "owner": "Owner",
+            "admin": "Admin",
+            "editor": "Editor",
+            "viewer": "Viewer"
+        },
+        "table": {
+            "user": "User",
+            "role": "Role",
+            "status": "Status",
+            "joined": "Joined",
+            "actions": "Actions"
+        },
+        "inviteModal": {
+            "title": "Invite Team Member",
+            "emailLabel": "Email Address",
+            "roleLabel": "Role",
+            "sendBtn": "Send Invitation",
+            "cancelBtn": "Cancel"
+        }
+    },
+    "Orders": {
+        "title": "Orders",
+        "subtitle": "Manage customer orders and subscriptions",
+        "createBtn": "Create Order",
+        "table": {
+            "customer": "Customer",
+            "plan": "Plan",
+            "amount": "Amount",
+            "status": "Status",
+            "date": "Date",
+            "actions": "Actions"
+        },
+        "status": {
+            "paid": "Paid",
+            "pending": "Pending",
+            "cancelled": "Cancelled"
+        },
+        "modal": {
+            "createTitle": "Create New Order",
+            "editTitle": "Edit Order",
+            "customerName": "Customer Name",
+            "customerEmail": "Customer Email",
+            "plan": "Plan",
+            "basePrice": "Base Price",
+            "discount": "Discount Amount",
+            "coupon": "Coupon Code",
+            "paymentStatus": "Payment",
+            "fulfillmentStatus": "Fulfillment",
+            "internalNotes": "Internal Notes",
+            "finalPrice": "Final Price",
+            "status": "Aggregate Status",
+            "cancel": "Cancel",
+            "save": "Save Order",
+            "create": "Create Order",
+            "customerPhone": "Phone Number"
+        }
+    },
+    "SEO": {
+        "DirectAnswers": {
+            "homepage": "IPTV Smarters Pro is a free IPTV player application that allows users to watch live TV, movies, and series on multiple devices including Firestick, Android, iOS, and Smart TVs. It supports Xtream Codes API and M3U URL playlists.",
+            "faq": "IPTV Smarters Pro is a legal media player application. The legality depends on your IPTV service provider. Using licensed IPTV services with proper broadcasting rights is completely legal.",
+            "firestickGuide": "To install IPTV Smarters on Firestick: Enable Apps from Unknown Sources in settings, install Downloader app from Amazon App Store, download the IPTV Smarters APK, and install. The entire process takes about 5 minutes.",
+            "samsungGuide": "IPTV Smarters Pro is not directly available on Samsung Smart TV app store. To use it on Samsung TV, connect an Amazon Firestick or Android TV box, use screen mirroring from your Android phone, or consider alternative IPTV apps compatible with Tizen OS.",
+            "androidGuide": "Install IPTV Smarters on Android by downloading the APK from the official website, enabling Unknown Sources in Android settings, and installing the app. The app works on Android phones, tablets, and Android TV boxes.",
+            "comparison": "IPTV Smarters Pro is better for beginners due to its free availability and simple interface, while TiviMate offers superior customization and premium EPG experience for advanced users at $5.99/year."
+        }
+    },
+    "Guide": {
+        "safety": {
+            "title": "Safety & Legal Information",
+            "paragraph1": "IPTV Smarters Pro is a legal media player application. The app itself is safe and does not host any content. However, the legality depends on your IPTV service provider. Always use licensed IPTV services with proper broadcasting rights.",
+            "paragraph2": "💡 **Recommendation:** We recommend using a VPN for enhanced privacy and security while streaming."
+        },
+        "prerequisites": {
+            "title": "Before you start",
+            "subscription": "**Active IPTV Subscription:** You need an existing subscription from an IPTV service provider",
+            "internet": "**Internet Connection:** Your Firestick must be connected to the internet (minimum 20 Mbps recommended)",
+            "credentials": "**Login Credentials:** Have your M3U playlist URL or Xtream Codes API credentials ready",
+            "storage": "**Storage Space:** Ensure at least 50MB free storage on your Firestick"
+        },
+        "howToUse": {
+            "title": "How to Use IPTV Smarters After Installation",
+            "step1": {
+                "title": "Open the App",
+                "description": "Launch IPTV Smarters from your Firestick home screen. You'll see the main login screen with different login options."
+            },
+            "step2": {
+                "title": "Login with Your IPTV Credentials",
+                "optionA": {
+                    "title": "Option A: Xtream Codes API",
+                    "step1": "Select \"Login with Xtream Codes API\"",
+                    "step2": "Enter your username, password, and server URL",
+                    "step3": "Tap \"Add User\" to save"
+                },
+                "optionB": {
+                    "title": "Option B: M3U Playlist URL",
+                    "step1": "Select \"Load Your Playlist or File/URL\"",
+                    "step2": "Paste your M3U URL",
+                    "step3": "Give it a name and tap \"Add\""
+                }
+            },
+            "step3": {
+                "title": "Start Watching",
+                "description": "Once logged in, you can browse live TV channels, movies, and series. Use the menu to navigate between sections and add favorites for quick access."
+            }
+        },
+        "troubleshooting": {
+            "title": "Troubleshooting Common Issues",
+            "appWontInstall": {
+                "title": "App Won't Install",
+                "solution": "Make sure \"Apps from Unknown Sources\" is enabled in Settings"
+            },
+            "playlistWontLoad": {
+                "title": "Playlist Won't Load",
+                "solution": "Double-check your credentials are entered correctly (case-sensitive)"
+            },
+            "buffering": {
+                "title": "Buffering Issues",
+                "solution": "Check your internet speed (min 10 Mbps) or try using Ethernet instead of WiFi"
+            },
+            "appCrashes": {
+                "title": "App Crashes",
+                "solution": "Clear app cache in Settings {'>'}  Apps {'>'} IPTV Smarters {'>'} Clear Cache"
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "isFree": {
+                "question": "Is IPTV Smarters Pro free?",
+                "answer": "Yes, IPTV Smarters Pro is completely free to download and use. However, you need an active IPTV subscription from a service provider to access content."
+            },
+            "needVpn": {
+                "question": "Do I need a VPN?",
+                "answer": "While not required, we highly recommend using a VPN to prevent ISP throttling and ensure maximum privacy during streaming."
+            },
+            "multipleServices": {
+                "question": "Can I use multiple IPTV services?",
+                "answer": "Yes! IPTV Smarters allows you to add multiple IPTV subscriptions from different providers and switch between them easily."
+            },
+            "formats": {
+                "question": "What formats does it support?",
+                "answer": "IPTV Smarters supports M3U playlists and Xtream Codes API. Make sure your IPTV provider supports one of these formats."
+            },
+            "otherDevices": {
+                "question": "Does it work on other devices?",
+                "answer": "Yes! IPTV Smarters is available for Android TV, Android mobiles, iOS (iPhone/iPad), Windows, macOS, and Smart TVs."
+            }
+        },
+        "relatedGuides": {
+            "title": "Related Guides",
+            "troubleshootingGuide": {
+                "title": "Troubleshooting Guide",
+                "description": "Comprehensive solutions for common IPTV issues"
+            },
+            "faqCenter": {
+                "title": "FAQ Center",
+                "description": "Quick answers to frequently asked questions"
+            },
+            "otherDevices": {
+                "title": "Other Device Guides",
+                "description": "Install on Android TV, Smart TV, iOS, and more"
+            },
+            "supportCenter": {
+                "title": "Support Center",
+                "description": "Browse all support resources and guides"
+            }
+        }
+    }
+}

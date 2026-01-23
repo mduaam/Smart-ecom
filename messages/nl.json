@@ -1,0 +1,534 @@
+{
+    "Index": {
+        "title": "IPTV Smarters Abonnement",
+        "description": "Premium IPTV Smarters Pro en Player Lite abonnementen."
+    },
+    "Nav": {
+        "plans": "Abonnementen",
+        "devices": "Apparaten",
+        "support": "Hulp",
+        "about": "Over ons",
+        "getStarted": "Aan de slag",
+        "account": "Account",
+        "signup": "Registreren"
+    },
+    "Hero": {
+        "badge": "Premium IPTV Entertainment",
+        "title": "Stream slimmer met",
+        "titleHighlight": "Smarters Pro",
+        "desc": "Toegang tot 20.000+ live kanalen, 60.000+ VOD's en premium sport in verbluffende 4K kwaliteit. Sluit je aan bij 100k+ gebruikers wereldwijd.",
+        "ctaStart": "Bekijk Plannen",
+        "ctaDemo": "Gratis Proefperiode"
+    },
+    "Pricing": {
+        "title": "Kies het Perfecte Plan voor Jou",
+        "subtitle": "Flexibele abonnementen afgestemd op jouw behoeften. Geen verborgen kosten, geen contracten. Directe activatie gegarandeerd.",
+        "perMonth": "per maand",
+        "perYear": "per jaar",
+        "per6Months": "per 6 maanden",
+        "mostPopular": "Meest Populair",
+        "cta": "Kies dit Plan",
+        "secure": "Veilig Afrekenen",
+        "compatibilityTitle": "Apparaat Compatibiliteit",
+        "compatibilityDesc": "Onze IPTV-service is ontworpen om naadloos te werken op al je favoriete apparaten.",
+        "multiRoomTitle": "Multi-Room abonnement nodig?",
+        "multiRoomDesc": "Wil je op meer dan 2 apparaten tegelijk kijken? Neem contact op met ons team voor een offerte op maat.",
+        "contactSupport": "Contact Support",
+        "features": {
+            "channels": "20.000+ Live Kanalen",
+            "vod": "60.000+ VOD (Films & Series)",
+            "quality": "4K / Ultra HD Kwaliteit",
+            "connections": "{count} Verbinding Inbegrepen",
+            "connectionsMulti": "Tot {count} Verbindingen",
+            "epg": "EPG & Catch-up Inbegrepen",
+            "devices": "Alle Apparaten Ondersteund",
+            "support": "24/7 Premium Ondersteuning",
+            "supportFast": "Support binnen < 2u",
+            "antiFreeze": "Anti-Freeze Technologie"
+        },
+        "comparison": {
+            "title": "Vergelijk Onze Functies",
+            "colFeatures": "Functies",
+            "colStandard": "Standaard",
+            "colPremium": "Premium"
+        },
+        "plans": {
+            "1month": "1 Maand Starter",
+            "6months": "6 Maanden Standaard",
+            "12months": "12 Maanden Premium"
+        },
+        "devicesList": {
+            "smartTv": "Smart TV",
+            "android": "Android/iOS",
+            "firestick": "Firestick",
+            "pc": "PC/Mac"
+        },
+        "tableValues": {
+            "channels": "20.000+",
+            "vod": "60.000+",
+            "supportStd": "< 12u",
+            "supportPrm": "< 2u"
+        }
+    },
+    "Support": {
+        "title": "Hoe kunnen we helpen?",
+        "searchPlaceholder": "Zoek naar gidsen, problemen of vragen...",
+        "searchBtn": "Zoeken",
+        "backToSupport": "Terug naar Support",
+        "searchResultsFor": "Zoekresultaten voor",
+        "noResults": "Geen resultaten gevonden",
+        "tryDifferentSearch": "Probeer te zoeken op een ander trefwoord",
+        "categories": {
+            "installation": {
+                "title": "Installatie Gidsen",
+                "desc": "Stapsgewijze instructies voor al je apparaten."
+            },
+            "troubleshooting": {
+                "title": "Probleemoplossing",
+                "desc": "Snelle oplossingen voor streamings- en inlogproblemen."
+            },
+            "faq": {
+                "title": "Veelgestelde Vragen",
+                "desc": "Vind antwoorden op veelgestelde vragen."
+            },
+            "tickets": {
+                "title": "Ticketsysteem",
+                "desc": "Vind je niet wat je zoekt? Open een support ticket."
+            },
+            "devices": {
+                "title": "Apparaat Hub",
+                "desc": "Leer meer over compatibiliteit en apps."
+            },
+            "kb": {
+                "title": "Kennisbank",
+                "desc": "Volledige documentatie en geavanceerde tutorials."
+            }
+        },
+        "browse": "Bekijk Categorie",
+        "ctaTitle": "Nog steeds hulp nodig?",
+        "ctaDesc": "Onze supportexperts staan 24 uur per dag klaar om te helpen met activatie, facturering of technische problemen.",
+        "ctaTicket": "Open een Support Ticket",
+        "ctaWhatsApp": "Contact via WhatsApp"
+    },
+    "Account": {
+        "welcome": "Welkom terug",
+        "renew": "Abonnement Verlengen",
+        "sidebar": {
+            "dashboard": "Dashboard",
+            "subscriptions": "Mijn Abonnementen",
+            "orders": "Bestellingen",
+            "tickets": "Support Tickets",
+            "billing": "Facturering",
+            "settings": "Instellingen",
+            "logout": "Uitloggen"
+        },
+        "stats": {
+            "status": "Status",
+            "active": "Actief",
+            "daysLeft": "Dagen Over",
+            "security": "Beveiliging",
+            "solid": "Uitstekend"
+        },
+        "subscription": {
+            "title": "Huidig Abonnement",
+            "code": "Activatiecode",
+            "copy": "Kopiëren",
+            "credentials": "App Inloggegevens",
+            "username": "Gebruikersnaam",
+            "password": "Wachtwoord",
+            "portal": "Portaal URL",
+            "deviceUsage": "Apparaatgebruik",
+            "connected": "Verbonden",
+            "limit": "Limiet",
+            "installGuide": "Hoe te installeren op je apparaat"
+        }
+    },
+    "Footer": {
+        "desc": "Premium IPTV-abonnementsservice met 20.000+ live kanalen en VOD wereldwijd. Kwaliteit waarop u kunt vertrouwen.",
+        "product": "Product",
+        "support": "Hulp",
+        "contact": "Contact",
+        "rights": "Alle rechten voorbehouden.",
+        "terms": "Servicevoorwaarden",
+        "privacy": "Privacybeleid",
+        "refund": "Restitutiebeleid",
+        "links": {
+            "pricing": "Prijzen & Abonnementen",
+            "devices": "Ondersteunde Apparaten",
+            "regional": "Regionale Content",
+            "features": "Functies",
+            "installation": "Installatiehandleidingen",
+            "troubleshooting": "Probleemoplossing",
+            "faq": "FAQ",
+            "ticket": "Ticket Openen"
+        }
+    },
+    "Home": {
+        "quality": {
+            "title": "Waarom kiezen voor Smarters Pro?",
+            "ultraFast": "Ultra-Snel Streamen",
+            "ultraFastDesc": "Geen buffering met onze premium hogesnelheidsservers wereldwijd.",
+            "stable": "Meest Stabiele Service",
+            "stableDesc": "99,9% uptime gegarandeerd met automatische failover-systemen en 24/7 monitoring.",
+            "multiDevice": "Multi-Apparaat Ondersteuning",
+            "multiDeviceDesc": "Werkt op Firestick, Android, iOS, Smart TV, MAG, Windows en macOS."
+        },
+        "features": {
+            "badge": "PREMIUM KWALITEIT",
+            "title": "Geniet van je Favoriete Content in",
+            "titleHighlight": "Kristalhelder 4K",
+            "list": [
+                "20k+ TV-zenders van over de hele wereld",
+                "60k+ Films & TV-series (VOD) dagelijks bijgewerkt",
+                "Alle sportpakketten inclusief PPV-evenementen",
+                "EPG-ondersteuning en Catch-up TV (tot 7 dagen)",
+                "Gebruiksvriendelijke Smarters Pro Interface"
+            ],
+            "cta": "Bekijk Alle Plannen"
+        },
+        "cta": {
+            "title": "Klaar om je Premium Entertainment Reis te Beginnen?",
+            "desc": "Sluit je aan bij meer dan 100k tevreden gebruikers die hun tv-ervaring hebben getransformeerd. Kies je plan en word binnen enkele minuten geactiveerd.",
+            "plansBtn": "Bekijk Prijsplannen",
+            "supportBtn": "Chat met Support",
+            "guarantee": "7 dagen niet-goed-geld-terug-garantie • Directe activatie"
+        }
+    },
+    "Regions": {
+        "badge": "{region} Dekking",
+        "title": "Beste IPTV Provider in",
+        "desc": "Kijk al je favoriete lokale kanalen uit {region}, sport en nieuws in 4K/FHD kwaliteit.",
+        "channelsTitle": "Kanalen",
+        "preview": "Voorbeeld van wat inbegrepen is",
+        "includedTitle": "Wat is inbegrepen?",
+        "includedDesc": "Ons {region} pakket biedt de meest stabiele en hoogwaardige streams die vandaag op de markt verkrijgbaar zijn.",
+        "features": {
+            "networks": "Alle Belangrijke {region} Netwerken",
+            "sports": "Regionale Sport & Nieuws",
+            "cinema": "4K & FHD Cinema Kanalen",
+            "kids": "Kinder & Documentaire Kanalen",
+            "catchup": "7-Dagen Terugkijken"
+        },
+        "cta": "Krijg {region} Pakket"
+    },
+    "Metadata": {
+        "Devices": {
+            "title": "Compatibele Apparaten voor IPTV Smarters Pro | Verbind Elk Apparaat",
+            "description": "Controleer compatibiliteit voor Firestick, Android TV, iOS, Samsung Smart TV en Windows. Installeer IPTV Smarters Pro vandaag nog op je favoriete apparaat."
+        },
+        "Plans": {
+            "title": "IPTV Smarters Abonnementen & Prijzen | Flexibele 1 tot 12 Maanden",
+            "description": "Kies het beste IPTV Smarters abonnement voor jou. Krijg toegang tot 20.000+ zenders en 4K films met onze abonnementsplannen van 1, 6 of 12 maanden."
+        },
+        "Support": {
+            "title": "IPTV Smarters Pro Support Center | Handleidingen, FAQ & Probleemoplossing",
+            "description": "Krijg hulp bij IPTV Smarters Pro. Vind installatiehandleidingen, tips voor probleemoplossing, veelgestelde vragen en contact met ons 24/7 team."
+        },
+        "Troubleshooting": {
+            "title": "Probleemoplossing IPTV Smarters Pro | Veelvoorkomende Problemen Oplossen",
+            "description": "Los veelvoorkomende streamingproblemen, buffering, inlogproblemen en app-crashes op met onze gedetailleerde gids."
+        }
+    },
+    "Troubleshooting": {
+        "title": "Probleemoplossing",
+        "subtitle": "Snelle oplossingen voor veelvoorkomende problemen",
+        "back": "Terug naar Support",
+        "trySolutions": "Probeer deze oplossingen:",
+        "stillNeedHelp": {
+            "title": "Nog steeds hulp nodig?",
+            "desc": "Als deze oplossingen niet werkten, staat ons supportteam klaar om u te helpen.",
+            "ticketBtn": "Support Ticket Openen",
+            "faqBtn": "Bekijk FAQ"
+        },
+        "issues": {
+            "buffering": {
+                "title": "Buffering of Trage Streaming",
+                "solutions": [
+                    "Controleer uw internetsnelheid (minimaal 10 Mbps voor SD, 25 Mbps voor HD)",
+                    "Herstart uw router en apparaat",
+                    "Schakel over naar een bekabelde verbinding indien mogelijk",
+                    "Sluit andere apps die bandbreedte gebruiken",
+                    "Probeer een andere server in de app-instellingen"
+                ]
+            },
+            "video": {
+                "title": "Video Speelt Niet Af",
+                "solutions": [
+                    "Update de Smarters Pro app naar de nieuwste versie",
+                    "Wis app-cache en gegevens",
+                    "Controleer of uw abonnement actief is",
+                    "Verifieer of uw activatiecode correct is",
+                    "Probeer een ander kanaal of content"
+                ]
+            },
+            "login": {
+                "title": "Inlogproblemen",
+                "solutions": [
+                    "Controleer uw gebruikersnaam en wachtwoord",
+                    "Zorg dat uw abonnement niet is verlopen",
+                    "Verifieer dat u de juiste portal-URL gebruikt",
+                    "Reset uw wachtwoord via het accountdashboard",
+                    "Neem contact op met support als het probleem aanhoudt"
+                ]
+            },
+            "crash": {
+                "title": "App Crasht of Loopt Vast",
+                "solutions": [
+                    "Sluit de app geforceerd en herstart",
+                    "Wis app-cache en gegevens",
+                    "Update naar de nieuwste app-versie",
+                    "Herstart uw apparaat",
+                    "Herinstalleer de app als het probleem blijft bestaan"
+                ]
+            }
+        }
+    },
+    "DevicesPage": {
+        "title": "Compatibele Apparaten",
+        "subtitle": "Smarters Pro werkt op bijna elk apparaat. Kies uw apparaat hieronder voor installatie-instructies en om de app te downloaden.",
+        "viewGuide": "Bekijk Gidsen →",
+        "list": {
+            "firestick": {
+                "name": "Amazon Firestick",
+                "description": "Stream op je Amazon Fire TV Stick met onze geoptimaliseerde IPTV-speler."
+            },
+            "android-tv": {
+                "name": "Android TV",
+                "description": "Geniet van naadloze streaming op uw Android TV-apparaat."
+            },
+            "android-mobile": {
+                "name": "Android Mobiel",
+                "description": "Kijk je favoriete content op je Android smartphone of tablet."
+            },
+            "ios": {
+                "name": "iOS (iPhone/iPad)",
+                "description": "Stream op je iPhone of iPad met onze iOS-app."
+            },
+            "smart-tv": {
+                "name": "Smart TV",
+                "description": "Native IPTV-ervaring op Samsung, LG en andere Smart TV's."
+            },
+            "mag": {
+                "name": "MAG Box",
+                "description": "Professionele IPTV-oplossing voor MAG set-top boxen."
+            },
+            "windows": {
+                "name": "Windows PC",
+                "description": "Stream op je Windows-computer met onze desktopapplicatie."
+            },
+            "macos": {
+                "name": "macOS",
+                "description": "Premium IPTV-ervaring op je Mac."
+            }
+        },
+        "features": {
+            "title": "Waarom kiezen voor onze multi-apparaat ondersteuning?",
+            "universal": {
+                "title": "Universele Compatibiliteit",
+                "desc": "Werkt probleemloos op alle belangrijke platforms en apparaten."
+            },
+            "setup": {
+                "title": "Eenvoudige Installatie",
+                "desc": "Stapsgewijze handleidingen voor snelle installatie op elk apparaat."
+            },
+            "multiScreen": {
+                "title": "Multi-Screen Ondersteuning",
+                "desc": "Gebruik je abonnement op meerdere apparaten tegelijkertijd."
+            }
+        }
+    },
+    "Auth": {
+        "title": "Welkom Terug",
+        "subtitle": "Log in voor toegang tot het beheerdersdashboard",
+        "createAccount": "Account Maken",
+        "joinSubtitle": "Begin je premium entertainment reis",
+        "emailLabel": "E-mailadres",
+        "emailPlaceholder": "Vul je e-mailadres in",
+        "passwordLabel": "Wachtwoord",
+        "passwordPlaceholder": "Maak een wachtwoord",
+        "confirmPasswordLabel": "Bevestig Wachtwoord",
+        "confirmPasswordPlaceholder": "Vul je wachtwoord opnieuw in",
+        "nameLabel": "Volledige Naam",
+        "namePlaceholder": "Vul je volledige naam in",
+        "signInBtn": "Inloggen",
+        "createAccountBtn": "Account Maken",
+        "creatingAccount": "Account maken...",
+        "signingIn": "Inloggen...",
+        "alreadyHaveAccount": "Heb je al een account?",
+        "error": {
+            "invalidCredentials": "Ongeldig e-mailadres of wachtwoord",
+            "serverError": "Er is iets misgegaan. Probeer het opnieuw."
+        },
+        "signupTitle": "Registreren | Smarters Pro",
+        "signupDesc": "Maak je account aan en begin direct met streamen van 20.000+ kanalen."
+    },
+    "Team": {
+        "title": "Teambeheer",
+        "subtitle": "Beheer je teamleden en hun rollen",
+        "inviteBtn": "Lid Uitnodigen",
+        "roles": {
+            "owner": "Eigenaar",
+            "admin": "Admin",
+            "editor": "Editor",
+            "viewer": "Kijker"
+        },
+        "table": {
+            "user": "Gebruiker",
+            "role": "Rol",
+            "status": "Status",
+            "joined": "Lid sinds",
+            "actions": "Acties"
+        },
+        "inviteModal": {
+            "title": "Teamlid Uitnodigen",
+            "emailLabel": "E-mailadres",
+            "roleLabel": "Rol",
+            "sendBtn": "Uitnodiging Versturen",
+            "cancelBtn": "Annuleren"
+        }
+    },
+    "Orders": {
+        "title": "Bestellingen",
+        "subtitle": "Beheer bestellingen en abonnementen van klanten",
+        "createBtn": "Bestelling Maken",
+        "table": {
+            "customer": "Klant",
+            "plan": "Abonnement",
+            "amount": "Bedrag",
+            "status": "Status",
+            "date": "Datum",
+            "actions": "Acties"
+        },
+        "status": {
+            "paid": "Betaald",
+            "pending": "In afwachting",
+            "cancelled": "Geannuleerd"
+        },
+        "modal": {
+            "createTitle": "Nieuwe Bestelling",
+            "editTitle": "Bestelling Bewerken",
+            "customerName": "Klantnaam",
+            "customerEmail": "Klant E-mail",
+            "plan": "Abonnement",
+            "basePrice": "Basisprijs",
+            "discount": "Korting",
+            "coupon": "Couponcode",
+            "finalPrice": "Totaalprijs",
+            "status": "Status",
+            "cancel": "Annuleren",
+            "save": "Opslaan",
+            "create": "Maken"
+        }
+    },
+    "SEO": {
+        "DirectAnswers": {
+            "homepage": "IPTV Smarters Pro is een gratis IPTV-speler applicatie waarmee gebruikers live tv, films en series kunnen bekijken op meerdere apparaten, waaronder Firestick, Android, iOS en Smart TV's. Het ondersteunt Xtream Codes API en M3U URL afspeellijsten.",
+            "faq": "IPTV Smarters Pro is een legale mediaspeler applicatie. De legaliteit hangt af van uw IPTV-serviceprovider. Het gebruik van gelicentieerde IPTV-diensten met de juiste uitzendrechten is volledig legaal.",
+            "firestickGuide": "Om IPTV Smarters op Firestick te installeren: Schakel Apps van Onbekende Bronnen in de instellingen in, installeer de Downloader app vanuit de Amazon App Store, download de IPTV Smarters APK en installeer deze. Het hele proces duurt ongeveer 5 minuten.",
+            "samsungGuide": "IPTV Smarters Pro is niet direct beschikbaar in de Samsung Smart TV app store. Om het op Samsung TV te gebruiken, sluit een Amazon Firestick of Android TV box aan, gebruik schermspiegeling vanaf uw Android telefoon, of overweeg alternatieve IPTV apps die compatibel zijn met Tizen OS.",
+            "androidGuide": "Installeer IPTV Smarters op Android door de APK te downloaden van de officiële website, Onbekende Bronnen in te schakelen in Android-instellingen en de app te installeren. De app werkt op Android telefoons, tablets en Android TV boxes.",
+            "comparison": "IPTV Smarters Pro is beter voor beginners vanwege de gratis beschikbaarheid en eenvoudige interface, terwijl TiviMate superieure aanpassing en premium EPG-ervaring biedt voor gevorderde gebruikers voor $5,99/jaar."
+        }
+    },
+    "Guide": {
+        "safety": {
+            "title": "Veiligheids- en rechtsinformatie",
+            "paragraph1": "IPTV Smarters Pro is een legale mediaspeler-applicatie. De app zelf is veilig en host geen inhoud. De legaliteit hangt echter af van uw IPTV-serviceprovider. Gebruik altijd gelicentieerde IPTV-services met de juiste uitzendrechten.",
+            "paragraph2": "💡 **Aanbeveling:** We raden aan een VPN te gebruiken voor verbeterde privacy en beveiliging tijdens het streamen."
+        },
+        "prerequisites": {
+            "title": "Voordat u begint",
+            "subscription": "**Actief IPTV-abonnement:** U heeft een bestaand abonnement nodig van een IPTV-serviceprovider",
+            "internet": "**Internetverbinding:** Uw Firestick moet verbonden zijn met internet (minimaal 20 Mbps aanbevolen)",
+            "credentials": "**Inloggegevens:** Houd uw M3U-afspeellijst-URL of Xtream Codes API-inloggegevens bij de hand",
+            "storage": "**Opslagruimte:** Zorg ervoor dat u ten minste 50 MB vrije opslagruimte heeft op uw Firestick"
+        },
+        "howToUse": {
+            "title": "Hoe IPTV Smarters te gebruiken na installatie",
+            "step1": {
+                "title": "Open de app",
+                "description": "Start IPTV Smarters vanaf uw Firestick-startscherm. U ziet het hoofdinlogscherm met verschillende inlogopties."
+            },
+            "step2": {
+                "title": "Log in met uw IPTV-inloggegevens",
+                "optionA": {
+                    "title": "Optie A: Xtream Codes API",
+                    "step1": "Selecteer \"Inloggen met Xtream Codes API\"",
+                    "step2": "Voer uw gebruikersnaam, wachtwoord en server-URL in",
+                    "step3": "Tik op \"Gebruiker toevoegen\" om op te slaan"
+                },
+                "optionB": {
+                    "title": "Optie B: M3U-afspeellijst-URL",
+                    "step1": "Selecteer \"Laad uw afspeellijst of bestand/URL\"",
+                    "step2": "Plak uw M3U-URL",
+                    "step3": "Geef het een naam en tik op \"Toevoegen\""
+                }
+            },
+            "step3": {
+                "title": "Begin met kijken",
+                "description": "Zodra u bent ingelogd, kunt u live tv-kanalen, films en series bekijken. Gebruik het menu om tussen secties te navigeren en voeg favorieten toe voor snelle toegang."
+            }
+        },
+        "troubleshooting": {
+            "title": "Veelvoorkomende problemen oplossen",
+            "appWontInstall": {
+                "title": "App kan niet worden geïnstalleerd",
+                "solution": "Zorg ervoor dat \"Apps van onbekende bronnen\" is ingeschakeld in Instellingen"
+            },
+            "playlistWontLoad": {
+                "title": "Afspeellijst wordt niet geladen",
+                "solution": "Controleer of uw inloggegevens correct zijn ingevoerd (hoofdlettergevoelig)"
+            },
+            "buffering": {
+                "title": "Bufferproblemen",
+                "solution": "Controleer uw internetsnelheid (min 10 Mbps) of probeer Ethernet te gebruiken in plaats van WiFi"
+            },
+            "appCrashes": {
+                "title": "App crasht",
+                "solution": "Wis app-cache in Instellingen {'>'}  Apps {'>'} IPTV Smarters {'>'} Cache wissen"
+            }
+        },
+        "faq": {
+            "title": "Veelgestelde vragen",
+            "isFree": {
+                "question": "Is IPTV Smarters Pro gratis?",
+                "answer": "Ja, IPTV Smarters Pro is volledig gratis te downloaden en te gebruiken. U heeft echter wel een actief IPTV-abonnement nodig van een serviceprovider om toegang te krijgen tot inhoud."
+            },
+            "needVpn": {
+                "question": "Heb ik een VPN nodig?",
+                "answer": "Hoewel het niet vereist is, raden we sterk aan een VPN te gebruiken om ISP-beperking te voorkomen en maximale privacy tijdens het streamen te garanderen."
+            },
+            "multipleServices": {
+                "question": "Kan ik meerdere IPTV-services gebruiken?",
+                "answer": "Ja! IPTV Smarters stelt u in staat om meerdere IPTV-abonnementen van verschillende providers toe te voegen en gemakkelijk tussen hen te schakelen."
+            },
+            "formats": {
+                "question": "Welke formaten worden ondersteund?",
+                "answer": "IPTV Smarters ondersteunt M3U-afspeellijsten en Xtream Codes API. Zorg ervoor dat uw IPTV-provider een van deze formaten ondersteunt."
+            },
+            "otherDevices": {
+                "question": "Werkt het op andere apparaten?",
+                "answer": "Ja! IPTV Smarters is beschikbaar voor Android TV, Android-mobiele apparaten, iOS (iPhone/iPad), Windows, macOS en Smart TV's."
+            }
+        },
+        "relatedGuides": {
+            "title": "Gerelateerde gidsen",
+            "troubleshootingGuide": {
+                "title": "Probleemoplossingshandleiding",
+                "description": "Uitgebreide oplossingen voor veelvoorkomende IPTV-problemen"
+            },
+            "faqCenter": {
+                "title": "Veelgestelde vragen centrum",
+                "description": "Snelle antwoorden op veelgestelde vragen"
+            },
+            "otherDevices": {
+                "title": "Gidsen voor andere apparaten",
+                "description": "Installeren op Android TV, Smart TV, iOS en meer"
+            },
+            "supportCenter": {
+                "title": "Ondersteuningscentrum",
+                "description": "Blader door alle ondersteuningsbronnen en gidsen"
+            }
+        }
+    }
+}
