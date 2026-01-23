@@ -6,6 +6,17 @@ import { Check, X, Shield, Zap, Tv, Smartphone, Monitor, Info } from 'lucide-rea
 import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 
+interface Plan {
+    _id: string;
+    name: { en: string };
+    price: number;
+    currency: string;
+    duration: string;
+    isPopular: boolean;
+    screens: number;
+    slug?: { current: string }; // Optional slug
+}
+
 interface PricingProps {
     plans?: Plan[];
     title?: string;

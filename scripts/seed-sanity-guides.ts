@@ -195,7 +195,7 @@ async function seed() {
     try {
         await clientWithAuth.createOrReplace(category);
         console.log(`Category '${category.name.en}' seeded.`);
-    } catch (e) {
+    } catch (e: any) {
         console.error(`Failed to seed category: ${e.message}`);
     }
 
@@ -204,7 +204,7 @@ async function seed() {
         try {
             await clientWithAuth.createOrReplace(guide);
             console.log(`Guide '${guide.title.en}' seeded.`);
-        } catch (e) {
+        } catch (e: any) {
             console.error(`Failed to seed guide '${guide.title.en}': ${e.message}`);
         }
     }
