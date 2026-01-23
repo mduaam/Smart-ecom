@@ -6,26 +6,18 @@ import { Check, X, Shield, Zap, Tv, Smartphone, Monitor, Info } from 'lucide-rea
 import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 
-interface Plan {
-    _id: string;
-    name: { en: string };
-    price: number;
-    currency: string;
-    duration: string;
-    isPopular: boolean;
-    screens: number;
-    slug?: { current: string }; // Optional slug
+interface PricingProps {
+    plans?: Plan[];
+    title?: string;
+    subtitle?: string;
 }
 
-const Pricing = ({ plans = [] }: { plans?: Plan[] }) => {
+const Pricing = ({ plans = [], title, subtitle }: PricingProps) => {
     const t = useTranslations('Pricing');
     const [selectedPlan, setSelectedPlan] = useState('12-months');
 
     // Use passed plans if available, otherwise use empty (or formatted to match structure?)
     // Actually, we must map the Sanity plans to the structure expected by the UI.
-    // The UI expects features list. Sanity plans usually don't have features list in this simplified schema?
-    // Wait, the Sanity schema had 'features' field? 
-    // I should check schema. If not, I'll use default feature list.
 
     // Default features for display if not in DB
     const defaultFeatures = [
@@ -80,10 +72,10 @@ const Pricing = ({ plans = [] }: { plans?: Plan[] }) => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl lg:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
-                        {t('title')}
+                        {title || t('title')}
                     </h2>
                     <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-lg">
-                        {t('subtitle')}
+                        {subtitle || t('subtitle')}
                     </p>
                 </div>
 
