@@ -92,7 +92,8 @@ export default async function Index() {
     currency,
     duration,
     isPopular,
-    screens
+    screens,
+    slug
   }`);
 
   // Generate SoftwareApplication Schema

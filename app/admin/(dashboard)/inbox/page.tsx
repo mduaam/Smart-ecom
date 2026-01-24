@@ -10,7 +10,7 @@ export default async function InboxPage() {
     return (
         <main className="flex flex-col h-screen overflow-hidden bg-zinc-50 dark:bg-zinc-950">
             {/* Header */}
-            <header className="px-8 py-6 border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center bg-white dark:bg-zinc-900 shrink-0">
+            <header className="px-4 md:px-8 py-6 border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center bg-white dark:bg-zinc-900 shrink-0">
                 <div>
                     <h1 className="text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-3">
                         <MessageSquare className="w-6 h-6 text-indigo-500" />

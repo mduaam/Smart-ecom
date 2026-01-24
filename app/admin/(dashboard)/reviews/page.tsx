@@ -9,7 +9,7 @@ export default async function ReviewsPage() {
     }
 
     return (
-        <div className="p-8">
+        <div className="p-4 md:p-8 lg:p-12">
             <h1 className="text-3xl font-bold text-white mb-8">Manage Reviews</h1>
 
             <div className="space-y-6">

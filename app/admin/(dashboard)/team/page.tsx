@@ -32,7 +32,7 @@ export default async function TeamPage() {
 
     return (
         <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans">
-            <main className="flex-1 p-8 lg:p-12 overflow-y-auto w-full">
+            <main className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto w-full">
                 <header className="flex justify-between items-center mb-12">
                     <div>
                         <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">Team Management</h1>

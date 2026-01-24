@@ -4,9 +4,13 @@ import { Activity, ShoppingBag, Package, Users, MessageSquare, DollarSign, Layou
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-export default function Sidebar() {
-    const pathname = usePathname();
+interface SidebarProps {
+    className?: string;
+    onLinkClick?: () => void;
+}
 
+export default function Sidebar({ className = "hidden lg:flex", onLinkClick }: SidebarProps) {
+    const pathname = usePathname();
     const menuItems = [
         { name: 'Dashboard', icon: <Activity className="w-5 h-5" />, href: '/admin/dashboard' },
         { name: 'Orders', icon: <ShoppingBag className="w-5 h-5" />, href: '/admin/orders' },
@@ -19,7 +23,7 @@ export default function Sidebar() {
     ];
 
     return (
-        <aside className="w-64 bg-zinc-900 text-zinc-400 p-8 flex flex-col hidden lg:flex h-screen sticky top-0">
+        <aside className={`w-64 bg-zinc-900 text-zinc-400 p-8 flex flex-col h-screen sticky top-0 ${className}`}>
             <div className="flex items-center gap-3 mb-12 text-white">
                 <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center font-bold">A</div>
                 <span className="text-xl font-bold">Admin Panel</span>
@@ -32,6 +36,7 @@ export default function Sidebar() {
                         <Link
                             key={item.name}
                             href={item.href}
+                            onClick={onLinkClick}
                             className={`flex items-center gap-4 p-4 rounded-xl font-bold transition-all cursor-pointer ${isActive
                                 ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
                                 : 'hover:text-white hover:bg-zinc-800'

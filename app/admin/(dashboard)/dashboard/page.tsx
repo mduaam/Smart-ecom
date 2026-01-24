@@ -43,7 +43,7 @@ export default async function AdminDashboard({ searchParams }: AdminDashboardPro
     }
 
     return (
-        <main className="p-8 lg:p-12 overflow-y-auto w-full">
+        <main className="p-4 md:p-8 lg:p-12 overflow-y-auto w-full">
             <header className="flex justify-between items-center mb-12">
                 <div>
                     <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">Dashboard Overview</h1>

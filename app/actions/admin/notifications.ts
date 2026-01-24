@@ -12,7 +12,7 @@ export async function getNotifications() {
     const { data: orders, error: ordersError } = await supabase
         .from('orders')
         .select('id, customer_name, total_amount, created_at, payment_status')
-        .eq('payment_status', 'paid')
+        // .eq('payment_status', 'paid') // REMOVED: Fetch all orders not just paid
         .order('created_at', { ascending: false })
         .limit(5);
 
