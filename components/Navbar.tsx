@@ -3,7 +3,7 @@
 import React from 'react';
 import { Link, useRouter, usePathname } from '@/navigation';
 import { useTranslations, useLocale } from 'next-intl';
-import { Menu, X, Globe, ShoppingCart, User, ChevronDown, LogOut } from 'lucide-react';
+import { Menu, X, Globe, ShoppingCart, User, ChevronDown, LogOut, Activity, ShoppingBag, Ticket, CreditCard, Settings } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -181,18 +181,60 @@ const Navbar = ({ siteSettings }: NavbarProps) => {
                                                     </p>
                                                 </div>
 
-                                                <div className="p-2">
+
+
+                                                <div className="p-2 space-y-1">
                                                     <Link
                                                         href={`/account/${user.id}/dashboard`}
-                                                        className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
                                                         onClick={() => setProfileOpen(false)}
                                                     >
                                                         <User className="w-4 h-4" />
                                                         Dashboard
                                                     </Link>
-                                                </div>
+                                                    <Link
+                                                        href={`/account/${user.id}/subscriptions`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <Activity className="w-4 h-4" />
+                                                        My Subscriptions
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/orders`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <ShoppingBag className="w-4 h-4" />
+                                                        Orders
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/tickets`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <Ticket className="w-4 h-4" />
+                                                        Support Tickets
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/billing`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <CreditCard className="w-4 h-4" />
+                                                        Billing
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/settings`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <Settings className="w-4 h-4" />
+                                                        Settings
+                                                    </Link>
 
-                                                <div className="p-2">
+                                                    <div className="h-px bg-zinc-100 dark:bg-zinc-800 my-1" />
+
                                                     <button
                                                         onClick={async () => {
                                                             await supabase.auth.signOut();
@@ -200,7 +242,7 @@ const Navbar = ({ siteSettings }: NavbarProps) => {
                                                             router.refresh();
                                                             window.location.reload(); // Hard refresh to ensure state clears
                                                         }}
-                                                        className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                                                     >
                                                         <LogOut className="w-4 h-4" />
                                                         Sign Out
@@ -252,18 +294,58 @@ const Navbar = ({ siteSettings }: NavbarProps) => {
                                                     </p>
                                                 </div>
 
-                                                <div className="p-2">
+                                                <div className="p-2 space-y-1">
                                                     <Link
                                                         href={`/account/${user.id}/dashboard`}
-                                                        className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
                                                         onClick={() => setProfileOpen(false)}
                                                     >
                                                         <User className="w-4 h-4" />
                                                         Dashboard
                                                     </Link>
-                                                </div>
+                                                    <Link
+                                                        href={`/account/${user.id}/subscriptions`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <Activity className="w-4 h-4" />
+                                                        My Subscriptions
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/orders`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <ShoppingBag className="w-4 h-4" />
+                                                        Orders
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/tickets`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <Ticket className="w-4 h-4" />
+                                                        Support Tickets
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/billing`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <CreditCard className="w-4 h-4" />
+                                                        Billing
+                                                    </Link>
+                                                    <Link
+                                                        href={`/account/${user.id}/settings`}
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-indigo-600 dark:hover:text-white transition-colors"
+                                                        onClick={() => setProfileOpen(false)}
+                                                    >
+                                                        <Settings className="w-4 h-4" />
+                                                        Settings
+                                                    </Link>
 
-                                                <div className="p-2">
+                                                    <div className="h-px bg-zinc-100 dark:bg-zinc-800 my-1" />
+
                                                     <button
                                                         onClick={async () => {
                                                             await supabase.auth.signOut();
@@ -271,7 +353,7 @@ const Navbar = ({ siteSettings }: NavbarProps) => {
                                                             router.refresh();
                                                             window.location.reload();
                                                         }}
-                                                        className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                                                        className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                                                     >
                                                         <LogOut className="w-4 h-4" />
                                                         Sign Out

@@ -141,7 +141,8 @@
             "connected": "Connected",
             "limit": "Limit",
             "service": "Service",
-            "installGuide": "How to Install on Your Device"
+            "installGuide": "How to Install on Your Device",
+            "details": "View Details"
         }
     },
     "Footer": {

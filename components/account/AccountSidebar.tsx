@@ -27,16 +27,6 @@ export default function AccountSidebar({
         { name: t('sidebar.settings'), icon: <Settings className="w-5 h-5" />, href: `/account/${userId}/settings` },
     ];
 
-    // Simple active check: strictly if pathname endswith or contains the href
-    // But since href includes userId, we can just check if current path contains the item's subpath after userId
-    // Actually Link component handles 'active' state often if configured, but here we do manual styling.
-    // Let's use usePathname if we want strict active state, or just letting Link generic work?
-    // The previous implementation had manual active prop. We'll implement a helper.
-
-    // We can't easily access pathname here without prop or hook, but we have useParams. 
-    // Ideally we pass currentPath or usePathname.
-    // Let's rely on usePathname from navigation or next/navigation
-
     return (
         <aside className="w-full lg:w-64 flex-shrink-0">
             <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] p-6 border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden">

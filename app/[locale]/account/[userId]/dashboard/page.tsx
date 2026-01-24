@@ -36,9 +36,9 @@ const DashboardPage = async ({ params }: { params: Promise<{ locale: string }> }
 
             {/* Content */}
             <div className="flex-1 space-y-8">
-                <div className="flex items-center justify-between">
-                    <h1 className="text-3xl font-bold dark:text-white">{t('welcome')}, {displayName}!</h1>
-                    <Link href="/plans" className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl text-sm hover:shadow-xl transition-all">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <h1 className="text-2xl md:text-3xl font-bold dark:text-white">{t('welcome')}, {displayName}!</h1>
+                    <Link href="/plans" className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl text-sm hover:shadow-xl transition-all text-center md:text-left">
                         {t('renew')}
                     </Link>
                 </div>
@@ -73,98 +73,33 @@ const DashboardPage = async ({ params }: { params: Promise<{ locale: string }> }
                 {/* Active Subscription Details or Empty State */}
                 {subscription ? (
                     <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden">
-                        <div className="p-8 border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center bg-zinc-50 dark:bg-zinc-950/50">
-                            <h3 className="text-xl font-bold dark:text-white">{t('subscription.title')}</h3>
-                            <span className="px-4 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-full uppercase tracking-widest">
-                                {subscription.plan_id || 'Premium'}
-                            </span>
-                        </div>
-                        <div className="p-8">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                                <div className="space-y-6">
-                                    <div>
-                                        <p className="text-xs font-bold text-zinc-400 uppercase mb-2">{t('subscription.code')}</p>
-                                        <div className="flex items-center gap-4">
-                                            <input readOnly value={subscription.stripe_subscription_id || 'N/A'} className="flex-1 bg-zinc-100 dark:bg-zinc-800 border-none rounded-xl px-4 py-3 font-mono text-sm dark:text-white" />
-                                            <button className="p-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl hover:bg-zinc-50 transition-all font-bold text-xs uppercase dark:text-white">{t('subscription.copy')}</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p className="text-xs font-bold text-zinc-400 uppercase mb-2">{t('subscription.credentials')}</p>
-                                        <div className="bg-zinc-50 dark:bg-zinc-950/50 p-6 rounded-2xl space-y-4">
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-sm text-zinc-500">{t('subscription.service') || 'Nom'}:</span>
-                                                <span className="text-sm font-bold dark:text-white font-mono bg-white dark:bg-zinc-900 px-2 py-1 rounded border border-zinc-200 dark:border-zinc-800">
-                                                    LXTREAM
-                                                </span>
-                                            </div>
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-sm text-zinc-500">{t('subscription.username')}:</span>
-                                                <span className="text-sm font-bold dark:text-white font-mono bg-white dark:bg-zinc-900 px-2 py-1 rounded border border-zinc-200 dark:border-zinc-800">
-                                                    {subscription.iptv_username || 'Pending...'}
-                                                </span>
-                                            </div>
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-sm text-zinc-500">{t('subscription.password')}:</span>
-                                                <span className="text-sm font-bold dark:text-white font-mono bg-white dark:bg-zinc-900 px-2 py-1 rounded border border-zinc-200 dark:border-zinc-800">
-                                                    {subscription.iptv_password || 'Pending...'}
-                                                </span>
-                                            </div>
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-sm text-zinc-500">{t('subscription.portal')}:</span>
-                                                <Link href={subscription.iptv_url || "http://vod4k.cc"} target="_blank" className="text-sm font-bold text-indigo-600 underline hover:text-indigo-500">
-                                                    {subscription.iptv_url || "http://vod4k.cc"}
-                                                </Link>
-                                            </div>
-                                        </div>
-
-                                        <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-900/30 rounded-xl">
-                                            <div className="flex gap-3">
-                                                <AlertTriangle className="w-5 h-5 text-yellow-600 flex-shrink-0" />
-                                                <div className="space-y-1">
-                                                    <p className="text-xs font-bold text-yellow-700 dark:text-yellow-500 uppercase tracking-wide">Attention</p>
-                                                    <p className="text-xs text-yellow-800 dark:text-yellow-400 leading-relaxed">
-                                                        Pour Smarters Pro sur Smart TV, utilisez l’URL suivante : <span className="font-bold select-all">http://sub-tv.site</span> ou bien : <span className="font-bold select-all">http://vod4k.cc</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {subscription.m3u_link && (
-                                            <div className="mt-4">
-                                                <p className="text-xs font-bold text-zinc-400 uppercase mb-2">M3U Liens</p>
-                                                <div className="flex items-center gap-2">
-                                                    <div className="flex-1 bg-zinc-100 dark:bg-zinc-800 border-none rounded-xl px-4 py-3 font-mono text-xs dark:text-white break-all">
-                                                        {subscription.m3u_link}
-                                                    </div>
-                                                    <button
-                                                        className="p-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl hover:bg-zinc-50 transition-all text-indigo-600"
-                                                    >
-                                                        Copy
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )}
+                        <div className="p-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 rounded-2xl flex items-center justify-center">
+                                    <Activity className="w-8 h-8" />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold dark:text-white mb-1">{subscription.plan_id || 'Premium Plan'}</h3>
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                                        <p className="text-sm font-bold text-zinc-500">{t('stats.active')}</p>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div className="flex flex-col justify-between">
-                                    <div className="space-y-4">
-                                        <p className="text-sm font-bold dark:text-white">{t('subscription.deviceUsage')}</p>
-                                        <div className="h-4 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
-                                            <div className="w-full h-full bg-indigo-600"></div>
-                                        </div>
-                                        <div className="flex justify-between text-xs font-bold text-zinc-500">
-                                            <span>1 {t('subscription.connected')}</span>
-                                            <span>{t('subscription.limit')}: {subscription.max_connections || 1}</span>
-                                        </div>
-                                    </div>
-                                    <div className="mt-8">
-                                        <Link href="/support/installation" className="w-full block py-4 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-2xl text-center font-bold text-sm hover:shadow-lg transition-all dark:text-white">
-                                            {t('subscription.installGuide')}
-                                        </Link>
-                                    </div>
-                                </div>
+                            <div className="flex items-center gap-4 w-full md:w-auto">
+                                <Link
+                                    href={`/account/${user.id}/subscriptions`}
+                                    className="flex-1 md:flex-none px-6 py-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl font-bold text-sm text-center hover:bg-zinc-50 transition-all dark:text-white"
+                                >
+                                    {t('subscription.details') || 'View Details'}
+                                </Link>
+                                <Link
+                                    href="/plans"
+                                    className="flex-1 md:flex-none px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl text-sm text-center hover:bg-indigo-700 transition-all"
+                                >
+                                    {t('renew')}
+                                </Link>
                             </div>
                         </div>
                     </div>

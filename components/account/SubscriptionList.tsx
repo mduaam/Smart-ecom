@@ -25,7 +25,7 @@ interface SubscriptionListProps {
 }
 
 export default function SubscriptionList({ subscriptions, translations: t }: SubscriptionListProps) {
-    const [expandedId, setExpandedId] = useState<string | null>(subscriptions[0]?.id || null);
+    const [expandedId, setExpandedId] = useState<string | null>(null);
     const [copied, setCopied] = useState<string | null>(null);
 
     const toggleExpand = (id: string) => {
