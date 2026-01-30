@@ -16,24 +16,11 @@ interface GuidesPageProps {
 // SEO Metadata
 export async function generateMetadata({ params }: GuidesPageProps): Promise<Metadata> {
     const { locale } = await params;
-
-    const titles: Record<string, string> = {
-        'en': 'IPTV Smarters Installation Guides - Setup on Any Device',
-        'es': 'Guías de Instalación IPTV Smarters - Configuración en Cualquier Dispositivo',
-        'fr': 'Guides d\'Installation IPTV Smarters - Configuration sur Tout Appareil',
-        'nl': 'IPTV Smarters Installatiehandleidingen - Installatie op Elk Apparaat'
-    };
-
-    const descriptions: Record<string, string> = {
-        'en': 'Complete installation guides for IPTV Smarters Pro on Firestick, Android, Samsung TV, iOS, and more. Step-by-step tutorials with screenshots for easy setup.',
-        'es': 'Guías completas de instalación para IPTV Smarters Pro en Firestick, Android, Samsung TV, iOS y más. Tutoriales paso a paso con capturas de pantalla.',
-        'fr': 'Guides d\'installation complets pour IPTV Smarters Pro sur Firestick, Android, Samsung TV, iOS et plus. Tutoriels étape par étape avec captures d\'écran.',
-        'nl': 'Volledige installatiehandleidingen voor IPTV Smarters Pro op Firestick, Android, Samsung TV, iOS en meer. Stapsgewijze tutorials met screenshots.'
-    };
+    const t = await getTranslations({ locale, namespace: 'Metadata.Guides' });
 
     return {
-        title: titles[locale] || titles['en'],
-        description: descriptions[locale] || descriptions['en'],
+        title: t('title'),
+        description: t('description'),
         keywords: [
             'IPTV Smarters installation',
             'IPTV setup guide',
@@ -41,10 +28,20 @@ export async function generateMetadata({ params }: GuidesPageProps): Promise<Met
             'Android IPTV tutorial',
             'Samsung TV IPTV'
         ],
+        alternates: {
+            canonical: `https://smart-ecom12.netlify.app/${locale}/support/guides`,
+            languages: {
+                'en': 'https://smart-ecom12.netlify.app/en/support/guides',
+                'es': 'https://smart-ecom12.netlify.app/es/support/guides',
+                'fr': 'https://smart-ecom12.netlify.app/fr/support/guides',
+                'nl': 'https://smart-ecom12.netlify.app/nl/support/guides',
+            }
+        },
         openGraph: {
-            title: titles[locale] || titles['en'],
-            description: descriptions[locale] || descriptions['en'],
-            type: 'website'
+            title: t('title'),
+            description: t('description'),
+            type: 'website',
+            locale: locale,
         }
     };
 }

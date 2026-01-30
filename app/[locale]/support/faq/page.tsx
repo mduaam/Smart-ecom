@@ -17,24 +17,11 @@ interface FAQPageProps {
 // SEO Metadata
 export async function generateMetadata({ params }: FAQPageProps): Promise<Metadata> {
     const { locale } = await params;
-
-    const titles: Record<string, string> = {
-        'en': 'IPTV Smarters Pro FAQ - Common Questions & Answers',
-        'es': 'Preguntas Frecuentes IPTV Smarters - Soporte y Ayuda',
-        'fr': 'FAQ IPTV Smarters Pro - Questions Fréquemment Posées',
-        'nl': 'IPTV Smarters Pro Veelgestelde Vragen - FAQ'
-    };
-
-    const descriptions: Record<string, string> = {
-        'en': 'Find answers to common IPTV Smarters Pro questions. Troubleshoot installation issues, buffering problems, login errors, and more. Expert solutions included.',
-        'es': 'Encuentre respuestas a preguntas comunes sobre IPTV Smarters Pro. Aprenda sobre instalación, soluciones de buffering y gestión de suscripciones.',
-        'fr': 'Trouvez des réponses aux questions courantes sur IPTV Smarters Pro. Apprenez-en plus sur l\'installation, les problèmes de mise en mémoire tampon et les abonnements.',
-        'nl': 'Vind antwoorden op veelgestelde vragen over IPTV Smarters Pro. Leer meer over installatie, buffering oplossingen en abonnement beheer.'
-    };
+    const t = await getTranslations({ locale, namespace: 'Metadata.Troubleshooting' });
 
     return {
-        title: titles[locale] || titles['en'],
-        description: descriptions[locale] || descriptions['en'],
+        title: t('title'),
+        description: t('description'),
         keywords: [
             'iptv smarters faq',
             'iptv buffering fix',
@@ -42,10 +29,20 @@ export async function generateMetadata({ params }: FAQPageProps): Promise<Metada
             'iptv subscription questions',
             'how to use smarters pro'
         ],
+        alternates: {
+            canonical: `https://smart-ecom12.netlify.app/${locale}/support/faq`,
+            languages: {
+                'en': 'https://smart-ecom12.netlify.app/en/support/faq',
+                'es': 'https://smart-ecom12.netlify.app/es/support/faq',
+                'fr': 'https://smart-ecom12.netlify.app/fr/support/faq',
+                'nl': 'https://smart-ecom12.netlify.app/nl/support/faq',
+            }
+        },
         openGraph: {
-            title: titles[locale] || titles['en'],
-            description: descriptions[locale] || descriptions['en'],
-            type: 'website'
+            title: t('title'),
+            description: t('description'),
+            type: 'website',
+            locale: locale,
         }
     };
 }

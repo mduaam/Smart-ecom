@@ -1,6 +1,39 @@
 import React from 'react';
 import { Globe } from 'lucide-react';
 import { Link } from '@/navigation';
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import StructuredData from '@/components/seo/StructuredData';
+import { generateCollectionPageSchema } from '@/lib/seo-schemas';
+
+type Props = {
+    params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'Metadata.Regions' });
+
+    return {
+        title: t('title'),
+        description: t('description'),
+        alternates: {
+            canonical: `https://smart-ecom12.netlify.app/${locale}/iptv/regions`,
+            languages: {
+                'en': 'https://smart-ecom12.netlify.app/en/iptv/regions',
+                'es': 'https://smart-ecom12.netlify.app/es/iptv/regions',
+                'fr': 'https://smart-ecom12.netlify.app/fr/iptv/regions',
+                'nl': 'https://smart-ecom12.netlify.app/nl/iptv/regions',
+            }
+        },
+        openGraph: {
+            title: t('title'),
+            description: t('description'),
+            type: 'website',
+            locale: locale,
+        }
+    };
+}
 
 const RegionsPage = () => {
     const regions = [
@@ -16,8 +49,20 @@ const RegionsPage = () => {
         { name: 'Australia', code: 'AU', channels: '1500+', slug: 'australia' },
     ];
 
+    const collectionSchema = generateCollectionPageSchema({
+        name: "IPTV Smarters Worldwide Coverage",
+        description: "Explore our IPTV channel lists for USA, UK, Canada, France, Spain, and more.",
+        url: "https://iptvsmarters.pro/iptv/regions",
+        hasPart: regions.map(r => ({
+            name: r.name,
+            description: `${r.channels} channels for ${r.name}`,
+            url: `https://iptvsmarters.pro/iptv/${r.slug}`
+        }))
+    });
+
     return (
         <div className="min-h-screen bg-white dark:bg-black">
+            <StructuredData data={collectionSchema} />
             <main className="pt-20">
                 <section className="bg-zinc-50 dark:bg-zinc-950 py-24 text-center">
                     <div className="max-w-4xl mx-auto px-4">

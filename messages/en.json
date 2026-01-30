@@ -68,7 +68,29 @@
             "vod": "60,000+",
             "supportStd": "< 12h",
             "supportPrm": "< 2h"
-        }
+        },
+        "faq": [
+            {
+                "question": "Does this subscription work on Firestick?",
+                "answer": "Yes, IPTV Smarters Pro is fully compatible with Amazon Firestick. We provide a simple downloader code for quick installation."
+            },
+            {
+                "question": "Can I watch on multiple devices?",
+                "answer": "The standard plan includes 1 connection. You can upgrade to the Multi-Room plan to watch on up to 5 devices simultaneously."
+            },
+            {
+                "question": "Is there a money-back guarantee?",
+                "answer": "Yes, we offer a 7-day money-back guarantee on all our 6 and 12-month plans if you are not satisfied with the service."
+            },
+            {
+                "question": "Do you offer adult channels?",
+                "answer": "Yes, our service includes optional adult channels which can be enabled or disabled via parental controls."
+            },
+            {
+                "question": "What internet speed do I need?",
+                "answer": "We recommend a minimum of 20 Mbps for buffer-free 4K streaming. For FHD content, 10 Mbps is sufficient."
+            }
+        ]
     },
     "Support": {
         "title": "How can we help?",
@@ -254,21 +276,33 @@
         }
     },
     "Metadata": {
+        "Home": {
+            "title": "IPTV Smarters Pro Subscription | #1 IPTV Player 2025",
+            "description": "Get the #1 IPTV Smarters Pro subscription. Access 20,000+ Channels, Movies & Series on Firestick, Android, iOS & Smart TV. Instant Activation & 24/7 Support."
+        },
         "Devices": {
-            "title": "Compatible Devices for IPTV Smarters Pro | Connect Any Device",
-            "description": "Check compatibility for Firestick, Android TV, iOS, Samsung Smart TV, and Windows. Install IPTV Smarters Pro on your favorite device today."
+            "title": "IPTV Smarters Pro Devices | Setup Firestick, Android & iOS",
+            "description": "Install IPTV Smarters Pro on any device. Step-by-step setup guides for Amazon Firestick, Android TV, Samsung Smart TV, iOS (iPhone/iPad), and Windows PC."
         },
         "Plans": {
-            "title": "IPTV Smarters Plans & Pricing | Flexible 1 to 12 Month Subscriptions",
-            "description": "Choose the best IPTV Smarters plan for you. Get access to 20,000+ channels and 4K movies with our 1, 6, or 12-month subscriptions."
+            "title": "IPTV Smarters Pricing | 1, 6 & 12 Month Plans",
+            "description": "Choose the best IPTV Smarters Pro subscription plan. Unbeatable prices for 1, 6, or 12 months access. Enjoy 4K streaming, Anti-Freeze tech, and 20,000+ channels."
         },
         "Support": {
-            "title": "IPTV Smarters Pro Support Center | Guides, FAQ & Troubleshooting",
-            "description": "Get help with IPTV Smarters Pro. Find installation guides, troubleshooting tips, FAQs, and contact our 24/7 support team."
+            "title": "IPTV Smarters Support | Installation & Troubleshooting",
+            "description": "Need help with IPTV Smarters Pro? specific guides for installation, troubleshooting buffering issues, and managing your subscription. 24/7 Tickets & Chat available."
         },
         "Troubleshooting": {
-            "title": "Troubleshooting IPTV Smarters Pro | Fix Common Issues",
-            "description": "Resolve common streaming issues, buffering, login problems, and app crashes with our detailed troubleshooting guide."
+            "title": "IPTV Smarters FAQ | Fix Buffering & Login Issues",
+            "description": "Solve common IPTV Smarters Pro issues quickly. Fix buffering, no playlist errors, login failed messages, and app crashes with our expert troubleshooting answers."
+        },
+        "Regions": {
+            "title": "IPTV Smarters Worldwide | USA, UK, Canada & Europe Lists",
+            "description": "Get local channels for your region. Our IPTV Smarters subscription covers USA, UK, Canada, Spain, France, and more with dedicated local server nodes for speed."
+        },
+        "Guides": {
+            "title": "IPTV Smarters Installation Guides | All Devices",
+            "description": "Browse our complete library of installation guides for IPTV Smarters Pro. Detailed tutorials for Firestick, Android, iOS, Smart TVs, and MAG boxes."
         }
     },
     "Troubleshooting": {

@@ -192,3 +192,86 @@ export function generateOrganizationSchema(data: OrganizationSchema) {
         })
     };
 }
+
+export interface ProductSchema {
+    name: string;
+    description: string;
+    image?: string;
+    brand?: string;
+    offers?: {
+        price: string;
+        priceCurrency: string;
+        availability?: string;
+        priceValidUntil?: string;
+        url?: string;
+    }[];
+    aggregateRating?: {
+        ratingValue: string;
+        reviewCount: string;
+    };
+}
+
+export function generateProductSchema(data: ProductSchema) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": data.name,
+        "description": data.description,
+        ...(data.image && { "image": data.image }),
+        "brand": {
+            "@type": "Brand",
+            "name": data.brand || "IPTV Smarters Pro"
+        },
+        ...(data.offers && {
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": data.offers[0]?.priceCurrency || "USD",
+                "lowPrice": Math.min(...data.offers.map(o => parseFloat(o.price))).toString(),
+                "highPrice": Math.max(...data.offers.map(o => parseFloat(o.price))).toString(),
+                "offerCount": data.offers.length.toString(),
+                "offers": data.offers.map(offer => ({
+                    "@type": "Offer",
+                    "price": offer.price,
+                    "priceCurrency": offer.priceCurrency,
+                    "availability": offer.availability || "https://schema.org/InStock",
+                    ...(offer.url && { "url": offer.url }),
+                    ...(offer.priceValidUntil && { "priceValidUntil": offer.priceValidUntil })
+                }))
+            }
+        }),
+        ...(data.aggregateRating && {
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": data.aggregateRating.ratingValue,
+                "reviewCount": data.aggregateRating.reviewCount
+            }
+        })
+    };
+}
+
+export interface CollectionPageSchema {
+    name: string;
+    description: string;
+    url: string;
+    breadcrumb?: any;
+    hasPart?: any[];
+}
+
+export function generateCollectionPageSchema(data: CollectionPageSchema) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": data.name,
+        "description": data.description,
+        "url": data.url,
+        ...(data.breadcrumb && { "breadcrumb": data.breadcrumb }),
+        ...(data.hasPart && {
+            "hasPart": data.hasPart.map(part => ({
+                "@type": "WebPage",
+                "name": part.name,
+                "description": part.description,
+                "url": part.url
+            }))
+        })
+    };
+}

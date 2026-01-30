@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Hero from '@/components/Hero';
 import Pricing from '@/components/Pricing';
 import Trust from '@/components/Trust';
@@ -17,24 +18,15 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
 
-  const titles: Record<string, string> = {
-    'en': 'IPTV Smarters Pro - The Ultimate IPTV Streaming App',
-    'fr': 'IPTV Smarters Pro - Application IPTV Ultime',
-    'es': 'IPTV Smarters Pro - La Mejor Aplicación IPTV',
-    'nl': 'IPTV Smarters Pro - De Ultieme IPTV App'
-  };
-
-  const descriptions: Record<string, string> = {
-    'en': 'IPTV Smarters Pro is a powerful IPTV player for Firestick, Android, Samsung TV & more. Easy setup, multi-screen support, and exceptional streaming quality.',
-    'fr': 'IPTV Smarters Pro est un lecteur IPTV puissant pour Firestick, Android, Samsung TV et plus. Configuration facile, support multi-écrans et qualité exceptionnelle.',
-    'es': 'IPTV Smarters Pro es un potente reproductor IPTV para Firestick, Android, Samsung TV y más. Configuración fácil, soporte multi-pantalla y calidad excepcional.',
-    'nl': 'IPTV Smarters Pro is een krachtige IPTV-speler voor Firestick, Android, Samsung TV en meer. Eenvoudige installatie, multi-screen ondersteuning en uitzonderlijke kwaliteit.'
-  };
+  // Fallback if keys are missing (safety)
+  const title = t.has('Home.title') ? t('Home.title') : 'IPTV Smarters Pro Subscription | #1 IPTV Player 2025';
+  const description = t.has('Home.description') ? t('Home.description') : 'Get the #1 IPTV Smarters Pro subscription. Access 20,000+ Channels, Movies & Series on Firestick, Android, iOS & Smart TV. Instant Activation & 24/7 Support.';
 
   return {
-    title: titles[locale] || titles['en'],
-    description: descriptions[locale] || descriptions['en'],
+    title: title,
+    description: description,
     keywords: [
       'IPTV Smarters Pro',
       'IPTV player',
@@ -44,27 +36,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'Smart TV IPTV',
       'IPTV streaming',
       'M3U player',
-      'Xtream Codes'
+      'Xtream Codes',
+      'IPTV Subscription'
     ],
     alternates: {
+      canonical: `https://smart-ecom12.netlify.app/${locale}`,
       languages: {
-        'en': '/en',
-        'fr': '/fr',
-        'es': '/es',
-        'nl': '/nl',
+        'en': 'https://smart-ecom12.netlify.app/en',
+        'fr': 'https://smart-ecom12.netlify.app/fr',
+        'es': 'https://smart-ecom12.netlify.app/es',
+        'nl': 'https://smart-ecom12.netlify.app/nl',
       },
     },
     openGraph: {
-      title: titles[locale] || titles['en'],
-      description: descriptions[locale] || descriptions['en'],
+      title: title,
+      description: description,
       type: 'website',
       siteName: 'IPTV Smarters Pro',
       locale: locale,
     },
     twitter: {
       card: 'summary_large_image',
-      title: titles[locale] || titles['en'],
-      description: descriptions[locale] || descriptions['en'],
+      title: title,
+      description: description,
     },
     robots: {
       index: true,

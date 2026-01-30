@@ -16,11 +16,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         title: t('title'),
         description: t('description'),
         alternates: {
+            canonical: `https://smart-ecom12.netlify.app/${locale}/support`,
             languages: {
-                'en': '/en/support',
-                'es': '/es/support',
-                'fr': '/fr/support',
-                'nl': '/nl/support',
+                'en': 'https://smart-ecom12.netlify.app/en/support',
+                'es': 'https://smart-ecom12.netlify.app/es/support',
+                'fr': 'https://smart-ecom12.netlify.app/fr/support',
+                'nl': 'https://smart-ecom12.netlify.app/nl/support',
             }
         }
     };
