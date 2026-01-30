@@ -214,6 +214,9 @@
             "plansBtn": "Ver Planes de Precios",
             "supportBtn": "Chatear con Soporte",
             "guarantee": "Garantía de devolución de dinero de 7 días • Activación instantánea"
+        },
+        "related": {
+            "title": "Guías y Recursos Útiles"
         }
     },
     "Regions": {

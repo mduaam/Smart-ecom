@@ -263,22 +263,22 @@ export default async function Index() {
         {/* Related Guides / Internal Linking Section */}
         <section className="py-12 border-t border-zinc-200 dark:border-zinc-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 className="text-xl font-bold mb-8 text-zinc-900 dark:text-white">{h('related.title', { defaultMessage: 'Helpful Guides & Resources' })}</h3>
+            <h2 className="text-xl font-bold mb-8 text-zinc-900 dark:text-white">{h('related.title', { defaultMessage: 'Helpful Guides & Resources' })}</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <Link href="/support/installation" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
-                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Installation Guide</h4>
+                <h3 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Installation Guide</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">Step-by-step setup for Firestick, Android, and iOS.</p>
               </Link>
               <Link href="/support/troubleshooting" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
-                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Troubleshooting</h4>
+                <h3 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Troubleshooting</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">Fix buffering, login issues, and playback errors.</p>
               </Link>
               <Link href="/iptv/devices" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
-                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Supported Devices</h4>
+                <h3 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Supported Devices</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">Check if your device is compatible with Smarters Pro.</p>
               </Link>
               <Link href="/support/faq" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
-                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">FAQ</h4>
+                <h3 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">FAQ</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">Common questions about subscription and activation.</p>
               </Link>
             </div>

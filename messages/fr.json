@@ -214,6 +214,9 @@
             "plansBtn": "Voir les Plans de Tarification",
             "supportBtn": "Discuter avec le Support",
             "guarantee": "Garantie de remboursement de 7 jours • Activation instantanée"
+        },
+        "related": {
+            "title": "Guides et Ressources Utiles"
         }
     },
     "Regions": {
