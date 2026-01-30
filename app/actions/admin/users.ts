@@ -42,6 +42,7 @@ export async function getTeamMembers() {
     const { data, error } = await supabaseAdmin
         .from('profiles')
         .select('*')
+        .in('role', ['admin', 'super_admin', 'support'])
         .order('created_at', { ascending: false });
 
     if (error) return { error: error.message };

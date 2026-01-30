@@ -13,15 +13,15 @@
         "signup": "Sign Up"
     },
     "Hero": {
-        "badge": "Premium IPTV Entertainment",
-        "title": "Stream Smarter with",
-        "titleHighlight": "Smarters Pro",
-        "desc": "Access 20,000+ live channels, 60,000+ VODs, and premium sports in stunning 4K quality. Join 100k+ global users today.",
-        "ctaStart": "Browse Plans",
-        "ctaDemo": "Free Trial"
+        "badge": "#1 Premium IPTV Service 2025",
+        "title": "Buy Premium IPTV",
+        "titleHighlight": "Smarters Subscription",
+        "desc": "The Best IPTV Player for Firestick, Android & Smart TV. Access 20,000+ live channels, 60,000+ VODs, and premium sports in stunning 4K/UHD quality with Anti-Freeze Technology.",
+        "ctaStart": "Get Your Subscription",
+        "ctaDemo": "Start Free Trial"
     },
     "Pricing": {
-        "title": "Choose the Perfect Plan for You",
+        "title": "Buy IPTV Subscription - Best Prices",
         "subtitle": "Flexible subscriptions tailored to your needs. No hidden fees, no contracts. Instant activation guaranteed.",
         "perMonth": "per month",
         "perYear": "per year",
@@ -145,6 +145,28 @@
             "details": "View Details"
         }
     },
+    "Trust": {
+        "title": "Why Trust IPTV Smarters Pro?",
+        "subtitle": "We are the leading provider of premium IPTV services with a focus on reliability and customer satisfaction.",
+        "features": {
+            "legal": {
+                "title": "100% Legal & Safe",
+                "desc": "We operate with full compliance and ensure your data is protected with military-grade encryption."
+            },
+            "support": {
+                "title": "24/7 Expert Support",
+                "desc": "Our dedicated team is available round-the-clock to assist with installation and activation."
+            },
+            "guarantee": {
+                "title": "Money-Back Guarantee",
+                "desc": "Not satisfied? We offer a 7-day money-back guarantee on all our premium plans."
+            },
+            "uptime": {
+                "title": "99.9% Server Uptime",
+                "desc": "Our anti-freeze technology ensures uninterrupted streaming even during peak hours."
+            }
+        }
+    },
     "Footer": {
         "desc": "Premium IPTV subscription service providing 20,000+ live channels and VOD Worldwide. Quality you can trust.",
         "product": "Product",
@@ -194,6 +216,9 @@
             "plansBtn": "View Pricing Plans",
             "supportBtn": "Chat With Support",
             "guarantee": "7-Day Money Back Guarantee • Instant Activation"
+        },
+        "related": {
+            "title": "Helpful Guides & Resources"
         }
     },
     "Regions": {
@@ -211,7 +236,22 @@
             "kids": "Kids & Documentary Channels",
             "catchup": "7-Day Catch-up TV"
         },
-        "cta": "Get {region} Package"
+        "cta": "Get {region} Package",
+        "faq": {
+            "title": "Frequently Asked Questions in {region}",
+            "legal": {
+                "question": "Is IPTV Smarters legal in {region}?",
+                "answer": "Using IPTV Smarters Pro as a player is 100% legal in {region}. However, we strictly recommend using our certified subscription service to ensure you are accessing fully licensed content compliant with {region} broadcasting regulations."
+            },
+            "vpn": {
+                "question": "Do I need a VPN for IPTV in {region}?",
+                "answer": "While our service uses advanced anti-throttling technology optimized for {region} ISPs, using a VPN is recommended for maximum privacy and to bypass potential regional blocks on specific sporting events."
+            },
+            "channels": {
+                "question": "What local {region} channels are included?",
+                "answer": "Our {region} package includes all major national and regional networks. You get full access to local news, sports, and entertainment channels in FHD/4K quality."
+            }
+        }
     },
     "Metadata": {
         "Devices": {
@@ -428,12 +468,14 @@
     },
     "SEO": {
         "DirectAnswers": {
-            "homepage": "IPTV Smarters Pro is a free IPTV player application that allows users to watch live TV, movies, and series on multiple devices including Firestick, Android, iOS, and Smart TVs. It supports Xtream Codes API and M3U URL playlists.",
-            "faq": "IPTV Smarters Pro is a legal media player application. The legality depends on your IPTV service provider. Using licensed IPTV services with proper broadcasting rights is completely legal.",
-            "firestickGuide": "To install IPTV Smarters on Firestick: Enable Apps from Unknown Sources in settings, install Downloader app from Amazon App Store, download the IPTV Smarters APK, and install. The entire process takes about 5 minutes.",
-            "samsungGuide": "IPTV Smarters Pro is not directly available on Samsung Smart TV app store. To use it on Samsung TV, connect an Amazon Firestick or Android TV box, use screen mirroring from your Android phone, or consider alternative IPTV apps compatible with Tizen OS.",
-            "androidGuide": "Install IPTV Smarters on Android by downloading the APK from the official website, enabling Unknown Sources in Android settings, and installing the app. The app works on Android phones, tablets, and Android TV boxes.",
-            "comparison": "IPTV Smarters Pro is better for beginners due to its free availability and simple interface, while TiviMate offers superior customization and premium EPG experience for advanced users at $5.99/year."
+            "homepage": "IPTV Smarters Pro is the best free IPTV player application for 2025, allowing users to watch live TV, movies, and series on multiple devices including Firestick, Android, iOS, and Smart TVs. It fully supports Xtream Codes API and M3U playlists with Anti-Freeze technology.",
+            "faq": "IPTV Smarters Pro is a legal media player application designed to manage and play your own content. It does not provide any content itself. Using our premium subscription service with licensed content is safe and legal.",
+            "firestickGuide": "To install IPTV Smarters on Firestick: 1. Enable 'Apps from Unknown Sources' in settings. 2. Install 'Downloader' app from Amazon Store. 3. Enter code 78522 to get the IPTV Smarters APK. 4. Install and Login.",
+            "samsungGuide": "For Samsung/LG Smart TVs, search for 'IPTV Smarters Pro' or 'Smarters Player Lite' in the official App Store. If unavailable in your region, we recommend using an Amazon Firestick 4K for the best experience.",
+            "androidGuide": "Install IPTV Smarters on Android by downloading the APK (Code: 78522 in Downloader), enabling Unknown Sources in Android settings, and installing the app. Compatible with all Android Phones, Tablets, and Android TV Boxes.",
+            "comparison": "Why choose IPTV Smarters Pro? Unlike TiviMate or other players, Smarters Pro offers a user-friendly interface perfect for beginners, multi-screen support, and cross-platform compatibility (iOS, Android, Windows, Mac) completely free.",
+            "vpn": "Do I need a VPN for IPTV? We strongly recommend using a VPN to exact throttling from your ISP and ensure privacy. A VPN hides your streaming activity and can improve buffering issues on some networks.",
+            "sports": "Watch Premier League, NFL, NBA, and UFC live in 4K with our Sports package. Zero buffering and catch-up TV available for all major sporting events."
         }
     },
     "Guide": {
@@ -479,7 +521,7 @@
             "title": "Troubleshooting Common Issues",
             "appWontInstall": {
                 "title": "App Won't Install",
-                "solution": "Make sure \"Apps from Unknown Sources\" is enabled in Settings"
+                "solution": "Make sure \"Apps from Unknown Sources\" is enabled in Developer Options. This is the #1 cause of installation failures."
             },
             "playlistWontLoad": {
                 "title": "Playlist Won't Load",

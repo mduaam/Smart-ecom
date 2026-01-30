@@ -3,6 +3,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
+import { broadcastNotification } from '@/lib/notification-service';
 
 // Helper to get Supabase client
 async function getSupabase() {
@@ -47,13 +48,11 @@ function getAdminSupabase() {
 export async function getReviews(productId: string) {
     const supabase = await getSupabase();
 
-    // Public read policy ensures only published reviews are visible (if policy is correct)
-    // Or we can explicitly filter: .eq('status', 'published')
     const { data, error } = await supabase
         .from('reviews')
         .select(`
             *,
-            member:user_id ( full_name )
+            profile:user_id ( full_name )
         `)
         .eq('product_id', productId)
         .eq('status', 'published')
@@ -76,11 +75,34 @@ export async function submitReview(formData: FormData) {
     const rating = parseInt(formData.get('rating') as string);
     const title = formData.get('title') as string;
     const content = formData.get('content') as string;
+    const imageFile = formData.get('image') as File | null;
 
     if (!rating || rating < 1 || rating > 5) return { error: 'Invalid rating' };
 
+    let image_url = null;
+
+    // Handle Image Upload if present
+    if (imageFile && imageFile.size > 0) {
+        const fileExt = imageFile.name.split('.').pop();
+        const fileName = `${user.id}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+        const filePath = `${productId}/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+            .from('reviews')
+            .upload(filePath, imageFile);
+
+        if (uploadError) {
+            console.error('Image upload failed:', uploadError);
+            // We continue without image if it fails, or we could return error
+        } else {
+            const { data: { publicUrl } } = supabase.storage
+                .from('reviews')
+                .getPublicUrl(filePath);
+            image_url = publicUrl;
+        }
+    }
+
     // Insert Review
-    // Note: RLS will check if user is a member (registered)
     const { error } = await supabase
         .from('reviews')
         .insert({
@@ -89,7 +111,8 @@ export async function submitReview(formData: FormData) {
             rating,
             title,
             content,
-            status: 'pending' // Default
+            image_url,
+            status: 'pending'
         });
 
     if (error) {
@@ -97,8 +120,20 @@ export async function submitReview(formData: FormData) {
         return { error: error.message };
     }
 
-    revalidatePath(`/products/${productId}`); // Or where reviews are shown
-    return { success: true, message: 'Review submitted for approval.' };
+    // Admin Notification
+    await broadcastNotification(
+        ['admin', 'super_admin'],
+        'New Review Submitted',
+        `A new review titled "${title}" was submitted for ${productId}.`,
+        {
+            type: 'info',
+            category: 'system',
+            link: '/admin/reviews'
+        }
+    );
+
+    revalidatePath(`/plans/${productId}`);
+    return { success: true, message: 'Review submitted for approval!' };
 }
 
 // --- Admin Actions ---
@@ -110,8 +145,7 @@ export async function getAdminReviews(status?: 'pending' | 'published' | 'reject
         .from('reviews')
         .select(`
             *,
-            member:user_id ( full_name, email ) 
-            -- Note: user_id now links to members
+            profile:user_id ( full_name, email )
         `)
         .order('created_at', { ascending: false });
 
@@ -148,6 +182,21 @@ export async function replyToReview(reviewId: string, reply: string) {
             admin_reply: reply,
             reply_at: new Date().toISOString()
         })
+        .eq('id', reviewId);
+
+    if (error) return { error: error.message };
+
+    revalidatePath('/admin/reviews');
+    return { success: true };
+}
+
+export async function deleteReview(reviewId: string) {
+    const supabase = await getSupabase();
+
+    // Admin check implicit via RLS
+    const { error } = await supabase
+        .from('reviews')
+        .delete()
         .eq('id', reviewId);
 
     if (error) return { error: error.message };

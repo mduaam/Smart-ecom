@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 
-import UserMenu from '@/components/admin/UserMenuServer';
-import NotificationsMenu from '@/components/admin/NotificationsMenuServer';
+
 import TeamList from '@/components/admin/TeamList';
 import { Search, Mail, Shield, UserPlus, MoreVertical, Loader2 } from 'lucide-react';
 import { getTeamMembers, inviteUser, updateRole } from '@/app/actions/admin/users';
@@ -33,7 +32,7 @@ export default async function TeamPage() {
     return (
         <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans">
             <main className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto w-full">
-                <header className="flex justify-between items-center mb-12">
+                <div className="flex justify-between items-center mb-12">
                     <div>
                         <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">Team Management</h1>
                         <p className="text-zinc-500">View and manage your team members.</p>
@@ -43,10 +42,8 @@ export default async function TeamPage() {
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                             <input type="text" placeholder="Search members..." className="pl-10 pr-4 py-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm focus:outline-none focus:border-indigo-600" />
                         </div>
-                        <NotificationsMenu />
-                        <UserMenu />
                     </div>
-                </header>
+                </div>
 
                 <TeamList initialProfiles={profiles || []} />
 

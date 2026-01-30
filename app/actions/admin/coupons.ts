@@ -40,13 +40,15 @@ export async function createCoupon(formData: FormData) {
         const expires_at_str = formData.get('expires_at') as string;
         const expires_at = expires_at_str ? new Date(expires_at_str).toISOString() : null;
 
+        const { data: { user } } = await supabase.auth.getUser();
+
         const { error } = await supabase.from('coupons').insert({
             code: code.toUpperCase(),
             discount_value,
             discount_type,
             max_uses,
-            expires_at
-            // created_by auto-handled or we can add it if needed, but RLS handles auth
+            expires_at,
+            created_by: user?.id
         });
 
         if (error) throw error;

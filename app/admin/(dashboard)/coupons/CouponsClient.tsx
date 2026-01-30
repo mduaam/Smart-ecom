@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Tag, Plus, Trash2, Calendar, Users, Power, Copy } from 'lucide-react';
 import CreateCouponForm from '@/components/admin/CreateCouponForm';
-import { toggleCouponStatus, deleteCoupon } from '@/app/actions/coupons';
+import { toggleCouponStatus, deleteCoupon } from '@/app/actions/admin/coupons';
 
 export default function CouponsClient({ initialCoupons }: { initialCoupons: any[] }) {
     const [isCreateOpen, setCreateOpen] = useState(false);

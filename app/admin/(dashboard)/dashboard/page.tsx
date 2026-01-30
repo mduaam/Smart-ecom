@@ -8,8 +8,7 @@ import {
     DollarSign,
     Search,
 } from 'lucide-react';
-import UserMenu from '@/components/admin/UserMenuServer';
-import NotificationsMenu from '@/components/admin/NotificationsMenuServer';
+
 import AnalyticsChart from '@/components/admin/AnalyticsChart';
 import { getAdminDashboardStats } from '@/app/actions/admin/dashboard';
 
@@ -39,25 +38,27 @@ export default async function AdminDashboard({ searchParams }: AdminDashboardPro
     const { stats, recentOrders, chartData, user, error } = await getAdminDashboardStats(period);
 
     if (error) {
-        // Handle error gracefully layout
+        return (
+            <main className="p-4 md:p-8 lg:p-12">
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-6 rounded-3xl text-red-600 dark:text-red-400">
+                    <div className="flex items-center gap-3 mb-2">
+                        <Activity className="w-5 h-5" />
+                        <h2 className="font-bold">Dashboard Error</h2>
+                    </div>
+                    <p className="text-sm">{error}</p>
+                </div>
+            </main>
+        );
     }
 
     return (
         <main className="p-4 md:p-8 lg:p-12 overflow-y-auto w-full">
-            <header className="flex justify-between items-center mb-12">
+            <div className="flex justify-between items-center mb-12">
                 <div>
                     <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">Dashboard Overview</h1>
                     <p className="text-zinc-500">Welcome back! Here's what's happening today.</p>
                 </div>
-                <div className="flex items-center gap-4">
-                    <form action="/admin/orders" className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-                        <input name="q" type="text" placeholder="Search anything..." className="pl-10 pr-4 py-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm focus:outline-none focus:border-indigo-600" />
-                    </form>
-                    <NotificationsMenu />
-                    <UserMenu />
-                </div>
-            </header>
+            </div>
 
             {/* Analytics Chart Section */}
             <div className="mb-12 bg-white dark:bg-zinc-900 rounded-[2rem] border border-zinc-200 dark:border-zinc-800 p-8 shadow-sm">
@@ -152,8 +153,8 @@ export default async function AdminDashboard({ searchParams }: AdminDashboardPro
                                             <div className="text-xs text-zinc-400">{order.customer_email || 'No Email'}</div>
                                             <Link href="/admin/orders" className="absolute inset-0 z-10" aria-label="View Order" />
                                         </td>
-                                        <td className="py-4 px-8 text-zinc-600 dark:text-zinc-400 font-medium">{order.plan_name || order.metadata?.plan_name || 'N/A'}</td>
-                                        <td className="py-4 px-8 font-bold dark:text-white">${order.total_amount.toFixed(2)}</td>
+                                        <td className="py-4 px-8 text-zinc-600 dark:text-zinc-400 font-medium">{order.plan_name || 'N/A'}</td>
+                                        <td className="py-4 px-8 font-bold dark:text-white">${order.final_amount.toFixed(2)}</td>
                                         <td className="py-4 px-8">
                                             <div className="flex flex-col items-start gap-1">
                                                 <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${getStatusStyle(order.payment_status)}`}>

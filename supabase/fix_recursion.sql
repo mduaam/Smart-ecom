@@ -1,71 +1,30 @@
--- Fix for Infinite Recursion in RLS Policies
--- We use a SECYRITY DEFINER function to read the role without triggering RLS on profiles again.
 
-create or replace function public.get_my_role()
-returns text
-language plpgsql
-security definer
-set search_path = public -- Secure search path
-as $$
-begin
-  return (select role from public.profiles where id = auth.uid());
-end;
-$$;
+-- 1. Reset RLS on profiles
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
--- Grant execute to auth users
-grant execute on function public.get_my_role to authenticated;
+-- 2. Drop the problematic recursive policies
+DROP POLICY IF EXISTS "Users view own profile" ON public.profiles;
+DROP POLICY IF EXISTS "Admins view all profiles" ON public.profiles;
 
--- ==========================================
--- Update Coupons Policies
--- ==========================================
-drop policy if exists "Admins can manage coupons" on public.coupons;
-create policy "Admins can manage coupons" on public.coupons
-  for all using (
-    get_my_role() in ('admin', 'super_admin')
-  );
+-- 3. Create non-recursive policies
 
--- ==========================================
--- Update Tickets Policies
--- ==========================================
-drop policy if exists "Admins manage all tickets" on public.tickets;
-create policy "Admins manage all tickets" on public.tickets
-  for all using (
-    get_my_role() in ('admin', 'support', 'super_admin')
-  );
+-- Non-recursive: Users can always see their own row
+CREATE POLICY "Users view own profile" 
+ON public.profiles 
+FOR SELECT 
+USING (auth.uid() = id);
 
-drop policy if exists "Admins manage messages" on public.ticket_messages;
-create policy "Admins manage messages" on public.ticket_messages
-  for all using (
-    get_my_role() in ('admin', 'support', 'super_admin')
-  );
+-- Non-recursive: Admins can view ALL profiles 
+-- (We use the user_metadata in the JWT to check role without querying the profile table itself)
+CREATE POLICY "Admins view all profiles" 
+ON public.profiles 
+FOR SELECT 
+USING (
+  (auth.jwt() -> 'user_metadata' ->> 'role') = 'admin' OR 
+  (auth.jwt() -> 'user_metadata' ->> 'role') = 'super_admin'
+);
 
--- ==========================================
--- Update Audit Logs Policies
--- ==========================================
-drop policy if exists "Admins view audit logs" on public.order_audit_logs;
-create policy "Admins view audit logs" on public.order_audit_logs
-  for select using (
-     get_my_role() in ('admin', 'super_admin')
-  );
-
--- ==========================================
--- Update Orders Policies (Existing)
--- ==========================================
--- We should also fix orders policies if they exist and cause issues
-drop policy if exists "Admins can view all orders" on public.orders;
-create policy "Admins can view all orders" on public.orders
-  for select using (
-     get_my_role() in ('admin', 'super_admin')
-  );
-
-drop policy if exists "Admins can insert orders" on public.orders;
-create policy "Admins can insert orders" on public.orders
-  for insert with check (
-     get_my_role() in ('admin', 'super_admin')
-  );
-
-drop policy if exists "Admins can update orders" on public.orders;
-create policy "Admins can update orders" on public.orders
-  for update using (
-     get_my_role() in ('admin', 'super_admin')
-  );
+-- 4. Ensure existing admins have the role in their metadata for the JWT check to work
+-- (This happens automatically on next login if the signup trigger is correct)
+-- For the super admin, let's make sure:
+UPDATE public.profiles SET role = 'super_admin' WHERE email = 'ouazzanitopo@gmail.com';

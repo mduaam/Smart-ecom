@@ -23,8 +23,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IPTV Smarters Subscription",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://iptvsmarters.pro'),
+  title: {
+    default: "IPTV Smarters Pro Subscription",
+    template: "%s | IPTV Smarters Pro"
+  },
   description: "Premium IPTV Smarters Pro and Player Lite subscriptions.",
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'IPTV Smarters Pro',
+  },
 };
 
 export default async function RootLayout({
@@ -49,7 +58,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           <div className="flex flex-col min-h-screen">

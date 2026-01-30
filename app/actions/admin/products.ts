@@ -31,7 +31,8 @@ export async function createPlan(planData: any) {
             duration: planData.duration,
             screens: planData.screens,
             isPopular: planData.isPopular,
-            stripeProductId: planData.stripeProductId // Optional
+            stripeProductId: planData.stripeProductId,
+            features: planData.features?.map((f: string) => ({ en: f })) || []
         };
 
         const result = await writeClient.create(doc);
@@ -55,7 +56,9 @@ export async function updatePlan(id: string, updates: any) {
                 currency: updates.currency,
                 duration: updates.duration,
                 screens: updates.screens,
-                isPopular: updates.isPopular
+                isPopular: updates.isPopular,
+                stripeProductId: updates.stripeProductId,
+                features: updates.features?.map((f: string) => ({ en: f })) || []
             })
             .commit();
 
@@ -207,5 +210,18 @@ export async function getProductsForDropdown() {
     } catch (error) {
         console.error("Error fetching products:", error);
         return [];
+    }
+}
+
+export async function deleteSanityDoc(id: string) {
+    await assertAdmin();
+
+    try {
+        await writeClient.delete(id);
+        revalidatePath('/admin/products');
+        return { success: true };
+    } catch (error: any) {
+        console.error("Sanity Delete Error:", error);
+        return { error: error.message };
     }
 }

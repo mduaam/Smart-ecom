@@ -143,6 +143,28 @@
             "installGuide": "Cómo instalar en tu dispositivo"
         }
     },
+    "Trust": {
+        "title": "Why Trust IPTV Smarters Pro?",
+        "subtitle": "We are the leading provider of premium IPTV services with a focus on reliability and customer satisfaction.",
+        "features": {
+            "legal": {
+                "title": "100% Legal & Safe",
+                "desc": "We operate with full compliance and ensure your data is protected with military-grade encryption."
+            },
+            "support": {
+                "title": "24/7 Expert Support",
+                "desc": "Our dedicated team is available round-the-clock to assist with installation and activation."
+            },
+            "guarantee": {
+                "title": "Money-Back Guarantee",
+                "desc": "Not satisfied? We offer a 7-day money-back guarantee on all our premium plans."
+            },
+            "uptime": {
+                "title": "99.9% Server Uptime",
+                "desc": "Our anti-freeze technology ensures uninterrupted streaming even during peak hours."
+            }
+        }
+    },
     "Footer": {
         "desc": "Servicio de suscripción IPTV premium que ofrece más de 20,000 canales en vivo y VOD en todo el mundo. Calidad en la que puedes confiar.",
         "product": "Producto",
@@ -209,7 +231,22 @@
             "kids": "Canales Infantiles y Documentales",
             "catchup": "Catch-up TV de 7 Días"
         },
-        "cta": "Obtener Paquete {region}"
+        "cta": "Obtener Paquete {region}",
+        "faq": {
+            "title": "Frequently Asked Questions in {region}",
+            "legal": {
+                "question": "Is IPTV Smarters legal in {region}?",
+                "answer": "Using IPTV Smarters Pro as a player is 100% legal in {region}. However, we strictly recommend using our certified subscription service to ensure you are accessing fully licensed content compliant with {region} broadcasting regulations."
+            },
+            "vpn": {
+                "question": "Do I need a VPN for IPTV in {region}?",
+                "answer": "While our service uses advanced anti-throttling technology optimized for {region} ISPs, using a VPN is recommended for maximum privacy and to bypass potential regional blocks on specific sporting events."
+            },
+            "channels": {
+                "question": "What local {region} channels are included?",
+                "answer": "Our {region} package includes all major national and regional networks. You get full access to local news, sports, and entertainment channels in FHD/4K."
+            }
+        }
     },
     "Metadata": {
         "Devices": {

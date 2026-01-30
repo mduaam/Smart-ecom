@@ -3,6 +3,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
+import { broadcastNotification } from '@/lib/notification-service';
 
 async function getSupabase() {
     const cookieStore = await cookies();
@@ -69,6 +70,19 @@ export async function createTicket(formData: FormData) {
 
         if (error) throw error;
 
+        // Admin Notification
+        // Admin Notification
+        await broadcastNotification(
+            ['admin', 'super_admin', 'support'],
+            'New Ticket: ' + subject,
+            `New ticket created by ${user.email}. Priority: ${priority}`,
+            {
+                type: 'warning',
+                category: 'ticket',
+                link: '/admin/tickets'
+            }
+        );
+
         revalidatePath('/account/tickets');
         return { success: true, ticketId: ticket.id };
     } catch (error: any) {
@@ -110,29 +124,15 @@ export async function getAllTicketsAdmin() {
     // Check if userIds is empty
     let usersMap = new Map();
     if (userIds.length > 0) {
-        // Fetch from Profiles (Admins/Staff)
+        // Fetch from Unified Profiles
         const { data: profiles, error: profilesError } = await supabase
             .from('profiles')
-            .select('id, email, full_name')
+            .select('id, email, full_name, role')
             .in('id', userIds);
 
         if (profilesError) return { error: profilesError.message };
 
-        profiles?.forEach(u => usersMap.set(u.id, { ...u, role: 'admin' })); // Assume admin/staff from profiles
-
-        // Fetch from Members (Regular Users) - filtered to only those not yet found (optimization)
-        const missingUserIds = userIds.filter(id => !usersMap.has(id));
-
-        if (missingUserIds.length > 0) {
-            const { data: members, error: membersError } = await supabase
-                .from('members')
-                .select('id, email, full_name')
-                .in('id', missingUserIds);
-
-            if (membersError) return { error: membersError.message };
-
-            members?.forEach(u => usersMap.set(u.id, { ...u, role: 'user' }));
-        }
+        profiles?.forEach(u => usersMap.set(u.id, u));
     }
 
     // 3. Merge Data

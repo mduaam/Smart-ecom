@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { createCoupon } from '@/app/actions/coupons';
+import { createCoupon } from '@/app/actions/admin/coupons';
 import { X, Loader2, Plus } from 'lucide-react';
 
 export default function CreateCouponForm({ onClose }: { onClose: () => void }) {

@@ -2,16 +2,28 @@
 
 import { useState } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Lock, Mail, AlertCircle, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { useEffect, Suspense } from 'react';
+import { adminLogin } from '@/app/actions/auth';
 
-export default function AdminLogin() {
+function AdminLoginContent() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const errorParam = searchParams.get('error');
+        if (errorParam === 'unauthorized') {
+            setError('Unauthorized: Admin access required.');
+        } else if (errorParam === 'fetch_failed') {
+            setError('Connection error. Please try again or check your network.');
+        }
+    }, [searchParams]);
 
     const supabase = createBrowserClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -24,15 +36,17 @@ export default function AdminLogin() {
         setError('');
 
         try {
-            const { error: signInError } = await supabase.auth.signInWithPassword({
-                email,
-                password,
-            });
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('password', password);
 
-            if (signInError) throw signInError;
+            const result = await adminLogin(formData);
 
-            // Successful login
-            router.push('/admin/dashboard');
+            if (result?.error) {
+                setError(result.error);
+                setLoading(false);
+            }
+            // Logic handled by redirection in server action on success
         } catch (err: any) {
             setError(err.message || 'Failed to login');
             setLoading(false);
@@ -111,5 +125,17 @@ export default function AdminLogin() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function AdminLogin() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-4">
+                <div className="text-zinc-500 animate-pulse font-bold">Loading Secure Portal...</div>
+            </div>
+        }>
+            <AdminLoginContent />
+        </Suspense>
     );
 }

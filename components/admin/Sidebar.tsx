@@ -1,6 +1,10 @@
 'use client';
 
-import { Activity, ShoppingBag, Package, Users, MessageSquare, DollarSign, Layout } from 'lucide-react';
+import {
+    Activity, ShoppingBag, Package, Users, MessageSquare,
+    Tag, Mail, Bell, Star, Layout, ShieldCheck, BarChart3,
+    Zap, Headphones
+} from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -13,11 +17,17 @@ export default function Sidebar({ className = "hidden lg:flex", onLinkClick }: S
     const pathname = usePathname();
     const menuItems = [
         { name: 'Dashboard', icon: <Activity className="w-5 h-5" />, href: '/admin/dashboard' },
+        { name: 'Analytics', icon: <BarChart3 className="w-5 h-5" />, href: '/admin/analytics' },
         { name: 'Orders', icon: <ShoppingBag className="w-5 h-5" />, href: '/admin/orders' },
+        { name: 'Subscriptions', icon: <Zap className="w-5 h-5" />, href: '/admin/subscriptions' },
         { name: 'Products', icon: <Package className="w-5 h-5" />, href: '/admin/products' },
         { name: 'Customers', icon: <Users className="w-5 h-5" />, href: '/admin/customers' },
-        { name: 'Inbox', icon: <MessageSquare className="w-5 h-5" />, href: '/admin/inbox' },
-        { name: 'Marketing', icon: <DollarSign className="w-5 h-5" />, href: '/admin/coupons' },
+        { name: 'Tickets', icon: <Headphones className="w-5 h-5" />, href: '/admin/tickets' },
+        { name: 'Coupons', icon: <Tag className="w-5 h-5" />, href: '/admin/coupons' },
+        { name: 'Marketing', icon: <Mail className="w-5 h-5" />, href: '/admin/marketing' },
+        { name: 'Reviews', icon: <Star className="w-5 h-5" />, href: '/admin/reviews' },
+        { name: 'Notifications', icon: <Bell className="w-5 h-5" />, href: '/admin/notifications' },
+        { name: 'Audit Logs', icon: <ShieldCheck className="w-5 h-5" />, href: '/admin/logs' },
         { name: 'Team', icon: <Users className="w-5 h-5" />, href: '/admin/team' },
         { name: 'CMS', icon: <Layout className="w-5 h-5" />, href: '/admin/cms' },
     ];
@@ -29,7 +39,7 @@ export default function Sidebar({ className = "hidden lg:flex", onLinkClick }: S
                 <span className="text-xl font-bold">Admin Panel</span>
             </div>
 
-            <nav className="space-y-2 flex-1">
+            <nav className="space-y-2 flex-1 overflow-y-auto pr-2 admin-scrollbar">
                 {menuItems.map((item) => {
                     const isActive = pathname === item.href;
                     return (

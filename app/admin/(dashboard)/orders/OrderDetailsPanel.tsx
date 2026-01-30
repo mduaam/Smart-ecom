@@ -8,7 +8,7 @@ import {
     CheckCircle, AlertCircle, Edit2, Tv, Plus, Trash
 } from 'lucide-react';
 import { updateOrder, deleteOrder, addOrderNote, getOrderNotes } from '@/app/actions/admin/orders';
-import { getSubscriptionByOrderId, updateSubscriptionCredentials } from '@/app/actions/admin/subscriptions';
+import { getSubscriptionByOrderId, updateSubscription } from '@/app/actions/admin/subscriptions';
 import { useRouter } from 'next/navigation';
 
 interface OrderDetailsPanelProps {
@@ -24,7 +24,7 @@ export default function OrderDetailsPanel({ order, isOpen, onClose }: OrderDetai
 
     // Editable Fields State
     const [formData, setFormData] = useState({
-        total_amount: 0,
+        final_amount: 0,
         internal_notes: '',
         payment_status: '',
         fulfillment_status: ''
@@ -52,7 +52,7 @@ export default function OrderDetailsPanel({ order, isOpen, onClose }: OrderDetai
     useEffect(() => {
         if (order) {
             setFormData({
-                total_amount: order.total_amount,
+                final_amount: order.final_amount,
                 internal_notes: order.internal_notes || '',
                 payment_status: order.payment_status,
                 fulfillment_status: order.fulfillment_status
@@ -107,7 +107,7 @@ export default function OrderDetailsPanel({ order, isOpen, onClose }: OrderDetai
     const handleSaveSubscription = async () => {
         if (!subscription) return;
         setIsSaving(true);
-        const res = await updateSubscriptionCredentials(subscription.id, subFormData);
+        const res = await updateSubscription(subscription.id, subFormData);
         if (res?.success) {
             alert('Subscription Updated Successfully');
             // Refresh local state
@@ -429,11 +429,11 @@ export default function OrderDetailsPanel({ order, isOpen, onClose }: OrderDetai
                                     <input
                                         type="number"
                                         className="w-32 p-1 text-right bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded"
-                                        value={formData.total_amount}
-                                        onChange={e => setFormData({ ...formData, total_amount: parseFloat(e.target.value) })}
+                                        value={formData.final_amount}
+                                        onChange={e => setFormData({ ...formData, final_amount: parseFloat(e.target.value) })}
                                     />
                                 ) : (
-                                    <span>${formData.total_amount?.toFixed(2)}</span>
+                                    <span>${formData.final_amount?.toFixed(2)}</span>
                                 )}
                             </div>
                         </div>

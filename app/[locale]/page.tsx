@@ -1,11 +1,15 @@
 import { useTranslations } from 'next-intl';
 import Hero from '@/components/Hero';
 import Pricing from '@/components/Pricing';
+import Trust from '@/components/Trust';
 import { Link } from '@/navigation';
+
 import { Metadata } from 'next';
 import StructuredData from '@/components/seo/StructuredData';
 import DirectAnswer from '@/components/seo/DirectAnswer';
 import { generateSoftwareApplicationSchema } from '@/lib/seo-schemas';
+import Image from 'next/image';
+
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -133,8 +137,11 @@ export default async function Index() {
 
         <Pricing plans={plans} />
 
+        <Trust />
+
         {/* Quality Section */}
         <section className="py-24 bg-zinc-50 dark:bg-zinc-950/50">
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl lg:text-4xl font-bold mb-16 text-zinc-900 dark:text-white">
               {h('quality.title')}
@@ -203,12 +210,15 @@ export default async function Index() {
               <div className="flex-1 relative">
                 <div className="relative z-10 rounded-[2rem] overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl group">
                   <div className="aspect-[4/3] bg-zinc-100 dark:bg-zinc-900 relative">
-                    <img
+                    <Image
                       src="/images/interface-preview.png"
                       alt="IPTV Smarters Pro interface displaying live TV channels on Firestick with EPG guide visible"
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+
                   </div>
                 </div>
                 {/* Decorative circles */}
@@ -249,7 +259,33 @@ export default async function Index() {
             </div>
           </div>
         </section>
+
+        {/* Related Guides / Internal Linking Section */}
+        <section className="py-12 border-t border-zinc-200 dark:border-zinc-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-xl font-bold mb-8 text-zinc-900 dark:text-white">{h('related.title', { defaultMessage: 'Helpful Guides & Resources' })}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <Link href="/support/installation" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
+                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Installation Guide</h4>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Step-by-step setup for Firestick, Android, and iOS.</p>
+              </Link>
+              <Link href="/support/troubleshooting" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
+                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Troubleshooting</h4>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Fix buffering, login issues, and playback errors.</p>
+              </Link>
+              <Link href="/iptv/devices" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
+                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">Supported Devices</h4>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Check if your device is compatible with Smarters Pro.</p>
+              </Link>
+              <Link href="/support/faq" className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
+                <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-indigo-600 mb-2">FAQ</h4>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Common questions about subscription and activation.</p>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
+
     </div>
   );
 }

@@ -27,8 +27,10 @@ interface Item {
     stripeProductId?: string;
     isPopular?: boolean;
     screens?: number;
+    features?: { en: string }[];
     // Product specific
     img?: string;
+    image?: any; // Sanity object
     description?: { en: string };
     stock?: number;
     variants?: Variant[];
@@ -48,6 +50,7 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
 
     // Variants State specific for form
     const [tempVariants, setTempVariants] = useState<Variant[]>([]);
+    const [tempFeatures, setTempFeatures] = useState<string[]>([]);
     const [uploadedImageId, setUploadedImageId] = useState<string | null>(null);
     const [isUploading, setIsUploading] = useState(false);
 
@@ -56,14 +59,18 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
     }, [initialItems]);
 
     useEffect(() => {
-        if (editingItem && editingItem._type === 'product') {
-            if (editingItem.variants) setTempVariants(editingItem.variants);
-            // Can't easily pre-fill image ID from read-only "img" URL without passing it differently.
-            // For now, let's assume if editing, we might not show existing image in upload preview unless we parse it.
-            // But we can reset it.
-            setUploadedImageId(null);
+        if (editingItem) {
+            if (editingItem._type === 'product') {
+                if (editingItem.variants) setTempVariants(editingItem.variants);
+                // Pre-fill image if possible (extract asset ID from reference)
+                const assetId = editingItem.image?.asset?._ref || null;
+                setUploadedImageId(assetId);
+            } else {
+                if (editingItem.features) setTempFeatures(editingItem.features.map(f => f.en));
+            }
         } else {
             setTempVariants([]);
+            setTempFeatures([]);
             setUploadedImageId(null);
         }
     }, [editingItem]);
@@ -103,12 +110,24 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
     const handleCreateClick = () => {
         setEditingItem(null);
         setTempVariants([]);
+        setTempFeatures([]);
         setIsModalOpen(true);
         setError(null);
     };
 
+    const handleDelete = async (id: string) => {
+        if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) return;
+        const { deleteSanityDoc } = await import('@/app/actions/admin/products');
+        const res = await deleteSanityDoc(id);
+        if (res.error) {
+            setError(res.error);
+        } else {
+            router.refresh();
+        }
+    };
+
     const addVariant = () => {
-        setTempVariants([...tempVariants, { name: 'Size', value: 'M', sku: '', price: 0, stock: 10 }]);
+        setTempVariants([...tempVariants, { name: 'RAM/ROM', value: '4GB/64GB', sku: '', price: 0, stock: 10 }]);
     };
 
     const removeVariant = (index: number) => {
@@ -120,6 +139,14 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
         // @ts-ignore
         newVariants[index][field] = value;
         setTempVariants(newVariants);
+    };
+
+    const addFeature = () => setTempFeatures([...tempFeatures, '']);
+    const removeFeature = (index: number) => setTempFeatures(tempFeatures.filter((_, i) => i !== index));
+    const updateFeature = (index: number, value: string) => {
+        const newFeatures = [...tempFeatures];
+        newFeatures[index] = value;
+        setTempFeatures(newFeatures);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -140,7 +167,9 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
                     currency: formData.get('currency') as string,
                     duration: formData.get('duration') as string,
                     screens: parseInt(formData.get('screens') as string),
-                    isPopular: formData.get('isPopular') === 'on'
+                    stripeProductId: formData.get('stripeProductId') as string,
+                    isPopular: formData.get('isPopular') === 'on',
+                    features: tempFeatures.filter(f => f.trim() !== '')
                 };
 
                 if (editingItem) {
@@ -157,7 +186,7 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
                     description: formData.get('description') as string,
                     stock: parseInt(formData.get('stock') as string) || 0,
                     image: uploadedImageId, // Pass the asset ID
-                    variants: tempVariants
+                    variants: tempVariants.filter(v => v.name.trim() !== '')
                 };
 
                 if (editingItem) {
@@ -265,16 +294,23 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
                                         </td>
                                         <td className="py-5 px-8">
                                             {item._type === 'plan' ? (
-                                                <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-xs font-bold">
-                                                    {item.duration} · {item.screens} Screen{item.screens !== 1 && 's'}
-                                                </span>
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="inline-flex self-start items-center px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-xs font-bold">
+                                                        {item.duration} · {item.screens} Screen{item.screens !== 1 && 's'}
+                                                    </span>
+                                                    {item.features && item.features.length > 0 && (
+                                                        <span className="text-xs text-zinc-500">{item.features.length} Features included</span>
+                                                    )}
+                                                </div>
                                             ) : (
                                                 <div className="flex flex-col gap-1">
-                                                    <span className={`inline-flex self-start items-center px-2.5 py-1 rounded-full text-xs font-bold ${(item.stock || 0) > 0
-                                                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                                                        : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                                                    <span className={`inline-flex self-start items-center px-2.5 py-1 rounded-full text-xs font-bold ${item.stock !== undefined && item.stock <= 5 && item.stock > 0
+                                                        ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400'
+                                                        : (item.stock || 0) > 0
+                                                            ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                                                            : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
                                                         }`}>
-                                                        {(item.stock || 0) > 0 ? `In Stock (${item.stock})` : 'Out of Stock'}
+                                                        {item.stock !== undefined && item.stock <= 5 && item.stock > 0 ? `Low Stock (${item.stock})` : (item.stock || 0) > 0 ? `In Stock (${item.stock})` : 'Out of Stock'}
                                                     </span>
                                                     {item.variants && item.variants.length > 0 && (
                                                         <span className="text-xs text-zinc-500">{item.variants.length} Variants</span>
@@ -287,10 +323,15 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
                                                 <button
                                                     onClick={() => handleEditClick(item)}
                                                     className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-indigo-600 transition-colors"
+                                                    title="Edit"
                                                 >
                                                     <Edit className="w-5 h-5" />
                                                 </button>
-                                                <button className="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-zinc-400 hover:text-red-500 transition-colors">
+                                                <button
+                                                    onClick={() => handleDelete(item._id)}
+                                                    className="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-zinc-400 hover:text-red-500 transition-colors"
+                                                    title="Delete"
+                                                >
                                                     <Trash className="w-5 h-5" />
                                                 </button>
                                             </div>
@@ -369,6 +410,36 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
                                             <input type="checkbox" name="isPopular" defaultChecked={editingItem?.isPopular} className="w-5 h-5 rounded text-indigo-600" />
                                             <span className="text-sm font-medium">Mark as Popular</span>
                                         </div>
+                                        <div className="col-span-2">
+                                            <label className="text-xs font-bold text-zinc-500 uppercase">Stripe Product ID</label>
+                                            <input name="stripeProductId" defaultValue={editingItem?.stripeProductId} className="w-full p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800" placeholder="prod_..." />
+                                        </div>
+
+                                        {/* Features Section */}
+                                        <div className="col-span-2 border-t border-zinc-200 dark:border-zinc-800 pt-6 mt-2">
+                                            <div className="flex justify-between items-center mb-4">
+                                                <h3 className="text-sm font-bold flex items-center gap-2"><Star className="w-4 h-4" /> Plan Features</h3>
+                                                <button type="button" onClick={addFeature} className="text-xs font-bold text-indigo-600 hover:text-indigo-700">+ Add Feature</button>
+                                            </div>
+                                            <div className="space-y-2">
+                                                {tempFeatures.map((feature, idx) => (
+                                                    <div key={idx} className="flex gap-2">
+                                                        <input
+                                                            value={feature}
+                                                            onChange={e => updateFeature(idx, e.target.value)}
+                                                            className="flex-1 p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-sm"
+                                                            placeholder="e.g. 4k Resolution, No Buffering..."
+                                                        />
+                                                        <button type="button" onClick={() => removeFeature(idx)} className="p-2 text-zinc-400 hover:text-red-500">
+                                                            <X className="w-5 h-5" />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                                {tempFeatures.length === 0 && (
+                                                    <div className="text-center text-xs text-zinc-400 py-4 italic">No features added</div>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 </>
                             ) : (
@@ -434,19 +505,19 @@ export default function ProductsClient({ initialItems }: { initialItems: Item[] 
                                                     <div key={idx} className="flex gap-2 items-start p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 relative group">
                                                         <div className="grid grid-cols-2 gap-2 flex-1">
                                                             <input
-                                                                placeholder="Name (Size)"
+                                                                placeholder="e.g. RAM/ROM or Plug"
                                                                 value={variant.name}
                                                                 onChange={e => updateVariant(idx, 'name', e.target.value)}
                                                                 className="p-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded text-xs"
                                                             />
                                                             <input
-                                                                placeholder="Value (XL)"
+                                                                placeholder="e.g. 4GB/64GB or EU"
                                                                 value={variant.value}
                                                                 onChange={e => updateVariant(idx, 'value', e.target.value)}
                                                                 className="p-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded text-xs"
                                                             />
                                                             <input
-                                                                placeholder="Uniq SKU"
+                                                                placeholder="Universal SKU (e.g. BOX-V1-EU)"
                                                                 value={variant.sku || ''}
                                                                 onChange={e => updateVariant(idx, 'sku', e.target.value)}
                                                                 className="p-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded text-xs"

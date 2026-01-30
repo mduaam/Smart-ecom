@@ -23,7 +23,7 @@ import OrderDetailsPanel from './OrderDetailsPanel';
 interface Order {
     id: string;
     order_number: number;
-    total_amount: number;
+    final_amount: number;
     currency: string;
     status: string;
     payment_status: 'paid' | 'unpaid' | 'refunded';
@@ -89,11 +89,16 @@ export default function OrdersClient({ initialOrders }: { initialOrders: any[] }
 
     const filteredOrders = orders
         .filter(order => {
+            const customerName = order.customer?.name || '';
+            const customerEmail = order.customer?.email || '';
+            const orderNumber = order.order_number?.toString() || '';
+            const orderId = order.id || '';
+
             const matchesSearch =
-                (order.customer?.name.toLowerCase().includes(searchTerm.toLowerCase()) || '') ||
-                (order.customer?.email.toLowerCase().includes(searchTerm.toLowerCase()) || '') ||
-                order.order_number.toString().includes(searchTerm) ||
-                order.id.includes(searchTerm);
+                customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                customerEmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                orderNumber.includes(searchTerm) ||
+                orderId.includes(searchTerm);
 
             const matchesStatus = statusFilter === 'all' || order.payment_status === statusFilter;
 
@@ -106,7 +111,7 @@ export default function OrdersClient({ initialOrders }: { initialOrders: any[] }
                     comparison = new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
                     break;
                 case 'amount':
-                    comparison = a.total_amount - b.total_amount;
+                    comparison = a.final_amount - b.final_amount;
                     break;
             }
             return sortOrder === 'asc' ? comparison : -comparison;
@@ -346,18 +351,26 @@ export default function OrdersClient({ initialOrders }: { initialOrders: any[] }
                                 <textarea name="internalNotes" placeholder="Private notes..." className="w-full p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800" />
                             </div>
 
-                            <div className="flex justify-between items-center py-4 border-t border-zinc-100 dark:border-zinc-800 mt-4">
-                                <div className="text-sm font-bold text-zinc-500">Total Amount</div>
-                                <div className="text-2xl font-black text-indigo-600">${Math.max(0, basePrice - discount).toFixed(2)}</div>
+                            <div className="bg-zinc-900 dark:bg-zinc-100 dark:text-black text-white p-6 rounded-2xl space-y-2 mt-4">
+                                <div className="flex justify-between items-center text-xs opacity-70 font-bold uppercase tracking-widest">
+                                    <span>Summary</span>
+                                    <span>USD</span>
+                                </div>
+                                <div className="flex justify-between items-end">
+                                    <div className="text-sm font-medium">Final Amount</div>
+                                    <div className="text-3xl font-black">${(basePrice - discount).toFixed(2)}</div>
+                                </div>
                             </div>
 
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/20 disabled:opacity-70 flex items-center justify-center gap-2"
-                            >
-                                {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Create Order'}
-                            </button>
+                            <div className="flex justify-end pt-6">
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-black text-lg shadow-xl shadow-indigo-600/20 transition-all flex items-center justify-center gap-3"
+                                >
+                                    {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Plus className="w-6 h-6" /> Confirm & Create Order</>}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -402,9 +415,14 @@ export default function OrdersClient({ initialOrders }: { initialOrders: any[] }
                                         className="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors group cursor-pointer"
                                     >
                                         <td className="py-5 px-8">
-                                            <span className="font-mono text-xs font-bold text-zinc-500">
-                                                #{order.order_number}
-                                            </span>
+                                            <div className="flex flex-col">
+                                                <span className="font-black text-sm text-zinc-900 dark:text-white">
+                                                    #{order.order_number}
+                                                </span>
+                                                <span className="font-mono text-[10px] text-zinc-400 opacity-50 truncate w-24">
+                                                    {order.id}
+                                                </span>
+                                            </div>
                                         </td>
                                         <td className="py-5 px-8">
                                             <div>
@@ -417,7 +435,7 @@ export default function OrdersClient({ initialOrders }: { initialOrders: any[] }
                                             </div>
                                         </td>
                                         <td className="py-5 px-8 font-bold text-zinc-900 dark:text-white">
-                                            ${order.total_amount.toFixed(2)}
+                                            ${order.final_amount.toFixed(2)}
                                         </td>
                                         <td className="py-5 px-8">
                                             <div className="flex flex-col items-start gap-1.5">

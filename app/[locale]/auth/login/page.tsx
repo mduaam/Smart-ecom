@@ -1,8 +1,7 @@
 
 import React from 'react';
 import LoginForm from '@/components/auth/LoginForm';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 
@@ -27,15 +26,12 @@ export default async function LoginPage({ params }: Props) {
 
     return (
         <div className="min-h-screen bg-zinc-50 dark:bg-black flex flex-col">
-            <Navbar />
-
             <main className="flex-grow flex items-center justify-center p-4 pt-20">
                 <div className="w-full flex justify-center">
                     <LoginForm locale={locale} />
                 </div>
             </main>
-
-            <Footer />
         </div>
+
     );
 }

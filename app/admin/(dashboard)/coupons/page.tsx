@@ -1,4 +1,4 @@
-import { getCoupons, toggleCouponStatus, deleteCoupon } from '@/app/actions/coupons';
+import { getCoupons, toggleCouponStatus, deleteCoupon } from '@/app/actions/admin/coupons';
 import CreateCouponForm from '@/components/admin/CreateCouponForm';
 import { Tag, Plus, Trash2, Calendar, Users, Power } from 'lucide-react';
 import CouponsClient from './CouponsClient';

@@ -1,7 +1,6 @@
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { getTranslations } from 'next-intl/server';
+
 import { getGuides, getLocalizedContent } from '@/lib/sanity-utils';
 import { Link } from '@/navigation';
 import { ArrowLeft, Clock, Tv, Download, PlayCircle, ShieldCheck, Check } from 'lucide-react';
@@ -111,8 +110,8 @@ const DevicePage = async ({ params }: DevicePageProps) => {
 
     return (
         <div className="min-h-screen bg-white dark:bg-black selection:bg-indigo-100 dark:selection:bg-indigo-900/30">
-            <Navbar />
             <main className="pt-20">
+
                 {/* Hero Section */}
                 <div className="relative overflow-hidden bg-zinc-900 py-24 lg:py-32">
                     <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=2070')] bg-cover bg-center"></div>
@@ -257,9 +256,9 @@ const DevicePage = async ({ params }: DevicePageProps) => {
                     )}
                 </div>
             </main>
-            <Footer />
         </div>
     );
+
 };
 
 export default DevicePage;

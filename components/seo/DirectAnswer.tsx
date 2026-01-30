@@ -17,7 +17,7 @@ interface DirectAnswerProps {
  */
 export default function DirectAnswer({ answer, className = '' }: DirectAnswerProps) {
     return (
-        <div
+        <dl
             className={`direct-answer bg-indigo-50 dark:bg-indigo-950/30 border-l-4 border-indigo-600 p-6 rounded-r-xl mb-8 ${className}`}
             itemScope
             itemType="https://schema.org/Answer"
@@ -39,17 +39,17 @@ export default function DirectAnswer({ answer, className = '' }: DirectAnswerPro
                     </svg>
                 </div>
                 <div className="flex-1">
-                    <p className="text-sm font-bold text-indigo-900 dark:text-indigo-300 mb-2">
+                    <dt className="text-sm font-bold text-indigo-900 dark:text-indigo-300 mb-2">
                         Quick Answer
-                    </p>
-                    <p
-                        className="text-base text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium"
+                    </dt>
+                    <dd
+                        className="text-base text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium m-0"
                         itemProp="text"
                     >
                         {answer}
-                    </p>
+                    </dd>
                 </div>
             </div>
-        </div>
+        </dl>
     );
 }

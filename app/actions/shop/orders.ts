@@ -2,6 +2,7 @@
 
 import { getSupabase, getAdminSupabase } from '@/lib/supabase-server';
 import { revalidatePath } from 'next/cache';
+import { broadcastNotification } from '@/lib/notification-service';
 
 export async function getOrders(page: number = 1, limit: number = 10) {
     try {
@@ -58,19 +59,24 @@ export async function createOrder(formData: FormData) {
         }
 
         // 2. Create Order Record (Use Admin Client to bypass RLS)
+        const planName = formData.get('plan') as string;
         const { data: order, error: orderError } = await supabaseAdmin
             .from('orders')
             .insert({
                 user_id: user?.id || null,
-                guest_email: user ? null : customerEmail,
+                customer_email: customerEmail,
+                guest_email: user ? null : customerEmail, // Keeping for compatibility if col exists
                 total_amount: totalAmount,
+                amount: totalAmount,
+                final_amount: totalAmount, // Added to fix NOT NULL constraint error
                 currency: 'USD',
                 status: 'pending',
+                plan_name: planName, // Add top-level plan_name
+                customer_name: formData.get('customerName') as string,
+                customer_phone: formData.get('customerPhone') as string,
                 coupon_code: formData.get('coupon') as string || null,
                 metadata: {
-                    customer_name: formData.get('customerName'),
-                    phone: formData.get('customerPhone'),
-                    plan_name: formData.get('plan') // Store legacy name in metadata too just in case
+                    plan_name: planName // Store in metadata too just in case
                 }
             })
             .select()
@@ -79,7 +85,6 @@ export async function createOrder(formData: FormData) {
         if (orderError) throw orderError;
 
         // 3. Create Order Item
-        const planName = formData.get('plan') as string;
         const productId = formData.get('productId') as string || 'plan-unknown-id';
 
         const { error: itemError } = await supabaseAdmin
@@ -96,6 +101,19 @@ export async function createOrder(formData: FormData) {
         if (itemError) {
             console.error("Failed to create order item:", itemError);
         }
+
+        // 4. Admin Notification
+        // 4. Admin Notification
+        await broadcastNotification(
+            ['admin', 'super_admin'],
+            'New Order: ' + planName,
+            `$${totalAmount} from ${formData.get('customerName')}. Email: ${customerEmail}`,
+            {
+                type: 'success',
+                category: 'order',
+                link: '/admin/orders'
+            }
+        );
 
         revalidatePath('/admin/orders'); // Verify if this path still valid for user?
         return { success: true };

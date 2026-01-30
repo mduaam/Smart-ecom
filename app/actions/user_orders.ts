@@ -63,37 +63,18 @@ export async function getUserProfile() {
         return { error: 'Not authenticated' };
     }
 
-    // 1. Try fetching from profiles (admin/staff)
-    let { data, error } = await supabase
+    // Unified Profiles lookup
+    const { data: profile, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
 
-    // 2. If not found, fetch from members (regular users)
-    if (!data) {
-        const { data: member, error: memberError } = await supabase
-            .from('members')
-            .select('*')
-            .eq('id', user.id)
-            .single();
-
-        if (member) {
-            data = { ...member, role: 'user' };
-            error = null; // Clear profile lookup error
-        } else if (memberError) {
-            // If really not found in either, return error (or could let it be null)
-            error = memberError;
-        }
-    }
-
     if (error) {
-        // It's possible to be authenticated but not in DB yet (if strict auth failed/bypassed?)
-        // But with strict auth, we expect member to exist.
         return { data: null, user, error: error.message };
     }
 
-    return { data, user };
+    return { data: profile, user };
 }
 
 export async function updateProfile(prevState: any, formData: FormData) {
@@ -104,21 +85,13 @@ export async function updateProfile(prevState: any, formData: FormData) {
 
     const fullName = formData.get('fullName') as string;
 
-    // Try updating members first (most likely)
-    let { error } = await supabase
-        .from('members')
-        .update({ full_name: fullName, updated_at: new Date().toISOString() })
+    // Update Unified Profile
+    const { error } = await supabase
+        .from('profiles')
+        .update({ full_name: fullName })
         .eq('id', user.id);
 
-    // If error (e.g. not found), try profiles
-    if (error) {
-        const { error: profileError } = await supabase
-            .from('profiles')
-            .update({ full_name: fullName }) // Profiles might trigger other things?
-            .eq('id', user.id);
-
-        if (profileError) return { error: profileError.message, success: false };
-    }
+    if (error) return { error: error.message, success: false };
 
     revalidatePath('/[locale]/account/[userId]/settings', 'page');
     return { success: true, error: undefined, message: 'Profile updated' };

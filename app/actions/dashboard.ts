@@ -39,24 +39,14 @@ export async function getDashboardData(locale: string) {
     }
 
     // 1. Fetch Profile
-    // 1. Fetch Profile or Member
-    let { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
 
-    // If not in profiles, check members
-    if (!profile) {
-        const { data: member } = await supabase
-            .from('members')
-            .select('*')
-            .eq('id', user.id)
-            .single();
-
-        if (member) {
-            profile = { ...member, role: 'user' }; // Normalize Structure
-        }
+    if (profileError && profileError.code !== 'PGRST116') {
+        console.error('[Dashboard] Profile fetch error:', profileError.message);
     }
 
     // 2. Fetch Active Subscription

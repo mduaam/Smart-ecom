@@ -3,58 +3,29 @@
 import { getSupabase, getAdminSupabase } from '@/lib/supabase-server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { getCurrentProfile, requireRole } from '@/lib/auth-service';
+import { ROLES, UserProfile } from '@/types/auth';
 
-export interface Profile {
-    id: string;
-    email: string;
-    full_name?: string;
-    role: 'user' | 'admin' | 'super_admin';
-}
+export type Profile = UserProfile;
 
 export async function getProfile(): Promise<Profile | null> {
-    const supabase = await getSupabase();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-        console.log('[Auth] getProfile: No user session found');
-        return null;
-    }
-
-    const { data: profile, error } = await supabase.from('profiles').select('*').eq('id', user.id).single();
-
-    // DEBUG LOG
-    console.log('[Auth] getProfile:', {
-        email: user.email,
-        id: user.id,
-        profileFound: !!profile,
-        profileRole: profile?.role,
-        error: error?.message
-    });
-
-    return profile;
+    return getCurrentProfile();
 }
 
 export async function isAdmin(): Promise<boolean> {
-    const profile = await getProfile();
-    return profile?.role === 'admin' || profile?.role === 'super_admin';
+    const profile = await getCurrentProfile();
+    // Using the centralized hasRole logic implicitly via specific checks if needed, 
+    // or just direct check for now to match interface.
+    // Ideally we use checkRole, but we are keeping this function signature.
+    return !!profile && (profile.role === 'admin' || profile.role === 'super_admin');
 }
 
 export async function assertAdmin() {
-    if (!(await isAdmin())) {
-        throw new Error('Unauthorized: Admin access required');
-    }
+    await requireRole(ROLES.ADMIN);
 }
 
 export async function assertSuperAdmin() {
-    const profile = await getProfile();
-    console.log('[Auth] assertSuperAdmin Check:', {
-        email: profile?.email,
-        role: profile?.role,
-        isSuperAdmin: profile?.role === 'super_admin'
-    });
-
-    if (profile?.role !== 'super_admin') {
-        throw new Error(`Unauthorized: Super Admin access required. Current Role: ${profile?.role || 'None'}`);
-    }
+    await requireRole(ROLES.SUPER_ADMIN);
 }
 
 // --- Session Actions ---
@@ -76,16 +47,13 @@ export async function login(formData: FormData) {
     }
 
     if (data.user) {
-        // Enforce Registration: Check if Member or Profile exists
-        const { data: member } = await supabase.from('members').select('id').eq('id', data.user.id).single();
+        // Enforce Registration: Check if Unified Profile exists
+        const { data: profile } = await supabase.from('profiles').select('id').eq('id', data.user.id).single();
 
-        if (!member) {
-            const { data: profile } = await supabase.from('profiles').select('id').eq('id', data.user.id).single();
-            if (!profile) {
-                // Authenticated in Auth but NOT in DB -> "Zombie" user / Not Registered
-                await supabase.auth.signOut();
-                return { error: 'Account not found. Please Sign Up first.' };
-            }
+        if (!profile) {
+            // Authenticated in Auth but NOT in DB -> "Zombie" user / Broken Trigger
+            await supabase.auth.signOut();
+            return { error: 'Profile not found. Please contact support or try signing up again.' };
         }
 
         redirect(`/${locale}/account/${data.user.id}/dashboard`);
@@ -124,14 +92,8 @@ export async function signup(formData: FormData) {
     // Ideally we should trust the trigger we set up in schema_clean.sql (if we did).
 
     if (data.user) {
-        // Manual Member Creation Fallback (in case trigger fails)
-        const { error: memberError } = await supabase.from('members').upsert({
-            id: data.user.id,
-            email: email,
-            full_name: fullName,
-            updated_at: new Date().toISOString()
-        }, { onConflict: 'id', ignoreDuplicates: true }); // Prefer trigger, but ensure existence
-
+        // The 'handle_new_user' trigger now creates the profile automatically.
+        // We just redirect to the dashboard.
         redirect(`/${locale}/account/${data.user.id}/dashboard`);
     } else {
         redirect(`/${locale}`);

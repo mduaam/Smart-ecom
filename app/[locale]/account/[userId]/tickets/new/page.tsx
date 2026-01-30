@@ -1,6 +1,5 @@
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import NewTicketForm from '@/components/account/NewTicketForm';
 import { Link } from '@/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -12,7 +11,6 @@ export default async function NewTicketPage({ params }: { params: Promise<{ loca
 
     return (
         <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
-            <Navbar />
             <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-3xl mx-auto">
                     <div className="mb-8">
@@ -34,7 +32,7 @@ export default async function NewTicketPage({ params }: { params: Promise<{ loca
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
+
     );
 }

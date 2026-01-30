@@ -1,14 +1,18 @@
 'use server';
 
-import { getSupabase } from '@/lib/supabase-server';
+import { getSupabase, getAdminSupabase } from '@/lib/supabase-server';
+import { assertAdmin } from '../auth';
 
 export async function logAdminAction(action: string, targetEmail: string | undefined, details: any = {}) {
     const supabase = await getSupabase();
     const { data: { user } } = await supabase.auth.getUser();
 
-    if (!user) return; // Should allow logging even if auth check failed? No, only authenticated actions.
+    if (!user) return;
 
-    await supabase.from('admin_logs').insert({
+    // Use Admin Client for writing logs to ensure no RLS blocks insertion of audit trails
+    // (Optional, but safer if we lock down admin_logs table tightly)
+    const adminSupabase = await getAdminSupabase();
+    await adminSupabase.from('admin_logs').insert({
         admin_id: user.id,
         action,
         target_email: targetEmail,
@@ -17,13 +21,11 @@ export async function logAdminAction(action: string, targetEmail: string | undef
 }
 
 export async function getAdminLogs() {
-    const supabase = await getSupabase();
-    // Verify admin access
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return { data: [] };
+    await assertAdmin();
+    const supabaseAdmin = await getAdminSupabase();
 
-    // Fetch logs with admin details
-    const { data, error } = await supabase
+    // Fetch logs with admin details using Service Role
+    const { data, error } = await supabaseAdmin
         .from('admin_logs')
         .select(`
             *,

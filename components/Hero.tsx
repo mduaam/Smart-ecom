@@ -6,6 +6,8 @@ import { Play, ShieldCheck, Zap, Globe } from 'lucide-react';
 import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 import VideoModal from './VideoModal';
+import Image from 'next/image';
+
 
 const Hero = ({ data }: { data?: any }) => {
     const t = useTranslations('Hero');
@@ -111,12 +113,16 @@ const Hero = ({ data }: { data?: any }) => {
                     className="relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl group cursor-pointer"
                 >
                     <div className="aspect-video bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center relative overflow-hidden">
-                        <img
+                        <Image
                             src="/images/hero-thumbnail.png"
                             alt="Watch IPTV in Action"
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                            priority
                         />
                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+
                         <div className="relative z-10 flex flex-col items-center gap-4">
                             <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/30">
                                 <div className="w-14 h-14 rounded-full bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/30">

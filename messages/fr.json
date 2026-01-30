@@ -143,6 +143,28 @@
             "installGuide": "Comment installer sur votre appareil"
         }
     },
+    "Trust": {
+        "title": "Pourquoi faire confiance à IPTV Smarters Pro ?",
+        "subtitle": "Nous sommes le principal fournisseur de services IPTV premium axé sur la fiabilité et la satisfaction client.",
+        "features": {
+            "legal": {
+                "title": "100% Légal et Sûr",
+                "desc": "Nous opérons en toute conformité et assurons la protection de vos données avec un chiffrement de niveau militaire."
+            },
+            "support": {
+                "title": "Support Expert 24/7",
+                "desc": "Notre équipe dédiée est disponible 24h/24 et 7j/7 pour vous aider à l'installation et l'activation."
+            },
+            "guarantee": {
+                "title": "Garantie Satisfait ou Remboursé",
+                "desc": "Pas satisfait ? Nous offrons une garantie de remboursement de 7 jours sur tous nos plans premium."
+            },
+            "uptime": {
+                "title": "Temps de disponibilité de 99,9%",
+                "desc": "Notre technologie anti-gel assure un streaming ininterrompu même pendant les heures de pointe."
+            }
+        }
+    },
     "Footer": {
         "desc": "Service d'abonnement IPTV premium offrant plus de 20 000 chaînes en direct et VOD dans le monde entier. Une qualité de confiance.",
         "product": "Produit",
@@ -209,7 +231,22 @@
             "kids": "Chaînes Enfants & Documentaires",
             "catchup": "Replay 7 Jours"
         },
-        "cta": "Obtenir le Pack {region}"
+        "cta": "Obtenir le Pack {region}",
+        "faq": {
+            "title": "Questions Fréquentes en {region}",
+            "legal": {
+                "question": "IPTV Smarters est-il légal en {region} ?",
+                "answer": "Utiliser IPTV Smarters Pro comme lecteur est 100% légal en {region}. Cependant, nous recommandons strictement d'utiliser notre service d'abonnement certifié pour garantir l'accès à un contenu sous licence conforme aux réglementations de {region}."
+            },
+            "vpn": {
+                "question": "Ai-je besoin d'un VPN pour l'IPTV en {region} ?",
+                "answer": "Bien que notre service utilise une technologie avancée anti-limitation optimisée pour les FAI de {region}, l'utilisation d'un VPN est recommandée pour une confidentialité maximale et pour contourner les blocages régionaux potentiels sur certains événements sportifs."
+            },
+            "channels": {
+                "question": "Quelles chaînes locales de {region} sont incluses ?",
+                "answer": "Notre forfait {region} comprend tous les grands réseaux nationaux et régionaux. Vous bénéficiez d'un accès complet aux chaînes d'actualités, de sport et de divertissement locales en qualité FHD/4K."
+            }
+        }
     },
     "Metadata": {
         "Devices": {
