@@ -5,9 +5,12 @@ import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
 import { getSupabase } from '@/lib/supabase-server';
 
+// -----------------------------------------------------------------------------
+// Core Functions
+// -----------------------------------------------------------------------------
+
 // Fetch current user's notifications
-// Fetch current user's notifications
-export async function getMyNotifications(limit = 20) {
+export async function getAdminNotifications(limit = 20) {
     const supabase = await getSupabase();
 
     // 1. Get User
@@ -38,10 +41,7 @@ export async function getMyNotifications(limit = 20) {
     };
 }
 
-// Alias for client consistency
-export const getAdminNotifications = getMyNotifications;
-
-export async function markAsRead(notificationId: string) {
+export async function markNotificationAsRead(notificationId: string) {
     const supabase = await getSupabase();
     // Auth check implicit in RLS, but user check needed for robust action
     const { data: { user } } = await supabase.auth.getUser();
@@ -110,17 +110,11 @@ export async function createBroadcastNotification(title: string, message: string
     return { success: true };
 }
 
-
-export const markNotificationAsRead = markAsRead;
-
 export async function saveNotificationConfig(id: string | null, data: any) {
     const supabase = await getSupabase();
     // Verify super_admin
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return { error: 'Unauthorized' };
-
-    // Check role manually if RLS doesn't throw clear error or for pre-flight
-    // But RLS "Super Admins can manage" handles it.
 
     let query;
     if (id) {
@@ -156,3 +150,9 @@ export async function deleteNotificationConfig(id: string) {
     revalidatePath('/admin/settings/notifications');
     return { success: true };
 }
+
+// -----------------------------------------------------------------------------
+// Aliases (For Backward Compatibility)
+// -----------------------------------------------------------------------------
+export const getMyNotifications = getAdminNotifications;
+export const markAsRead = markNotificationAsRead;
