@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import { routing } from '@/navigation';
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://iptvsmarters.pro';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://smart-ecom12.netlify.app';
 
     return {
         rules: {
