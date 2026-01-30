@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { getSupabase } from '@/lib/supabase-server';
 
 // Fetch current user's notifications
+// Fetch current user's notifications
 export async function getMyNotifications(limit = 20) {
     const supabase = await getSupabase();
 
@@ -36,6 +37,9 @@ export async function getMyNotifications(limit = 20) {
         unreadCount: unreadCount || 0
     };
 }
+
+// Alias for client consistency
+export const getAdminNotifications = getMyNotifications;
 
 export async function markAsRead(notificationId: string) {
     const supabase = await getSupabase();
@@ -83,5 +87,72 @@ export async function deleteNotification(notificationId: string) {
 
     if (error) return { error: error.message };
     revalidatePath('/admin/notifications');
+    return { success: true };
+}
+
+export async function createBroadcastNotification(title: string, message: string, type: string) {
+    const supabase = await getSupabase();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return { error: 'Unauthorized' };
+
+    const { error } = await supabase
+        .from('admin_notifications')
+        .insert({
+            user_id: user.id,
+            title,
+            message,
+            type,
+            is_read: false
+        });
+
+    if (error) return { error: error.message };
+    revalidatePath('/admin/notifications');
+    return { success: true };
+}
+
+
+export const markNotificationAsRead = markAsRead;
+
+export async function saveNotificationConfig(id: string | null, data: any) {
+    const supabase = await getSupabase();
+    // Verify super_admin
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return { error: 'Unauthorized' };
+
+    // Check role manually if RLS doesn't throw clear error or for pre-flight
+    // But RLS "Super Admins can manage" handles it.
+
+    let query;
+    if (id) {
+        query = supabase
+            .from('notification_configs')
+            .update(data)
+            .eq('id', id)
+            .select()
+            .single();
+    } else {
+        query = supabase
+            .from('notification_configs')
+            .insert(data)
+            .select()
+            .single();
+    }
+
+    const { data: result, error } = await query;
+
+    if (error) return { error: error.message };
+    revalidatePath('/admin/settings/notifications');
+    return { success: true, data: result };
+}
+
+export async function deleteNotificationConfig(id: string) {
+    const supabase = await getSupabase();
+    const { error } = await supabase
+        .from('notification_configs')
+        .delete()
+        .eq('id', id);
+
+    if (error) return { error: error.message };
+    revalidatePath('/admin/settings/notifications');
     return { success: true };
 }
