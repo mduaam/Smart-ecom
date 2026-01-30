@@ -74,7 +74,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-import { getTranslations } from 'next-intl/server';
 import { client } from '@/sanity/lib/client';
 
 export default async function Index() {
